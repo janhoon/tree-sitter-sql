@@ -20,10 +20,13 @@
     "authors": [
       {
         "name": "derek stride"
+      },
+      {
+        "name": "jan hoon"
       }
     ],
     "links": {
-      "repository": "git+https://github.com/derekstride/tree-sitter-sql.git"
+      "repository": "git+https://github.com/janhoon/tree-sitter-sql.git"
     }
   },
   "bindings": {

@@ -5,7 +5,7 @@
 Clone the repository and run the setup script.
 
 ```
-git clone https://github.com/DerekStride/tree-sitter-sql.git
+git clone https://github.com/janhoon/tree-sitter-sql.git
 npm install
 ```
 
@@ -71,5 +71,5 @@ Verify that all the changes are correct and push the updates to a new branch.
 git push
 ```
 
-Once that PR is merged, create a new Release [on Github](https://github.com/DerekStride/tree-sitter-sql/releases). When
+Once that PR is merged, create a new Release [on Github](https://github.com/janhoon/tree-sitter-sql/releases). When
 the release is published Github Actions will publish the new version to npm.
