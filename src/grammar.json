@@ -81,7 +81,7 @@
       "members": [
         {
           "type": "PATTERN",
-          "value": "select",
+          "value": "[select]",
           "flags": "i"
         },
         {
@@ -183,7 +183,7 @@
       "members": [
         {
           "type": "PATTERN",
-          "value": "from",
+          "value": "[from]",
           "flags": "i"
         },
         {

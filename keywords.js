@@ -3,8 +3,8 @@
 //
 module.exports = {
   keywords: {
-    SELECT: /select/i,
-    FROM: /from/i,
+    SELECT: /[select]/i,
+    FROM: /[from]/i,
     AS: /[as]/i,
   },
 };
