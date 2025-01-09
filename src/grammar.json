@@ -15,8 +15,66 @@
         {
           "type": "SYMBOL",
           "name": "select_statement"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "table_expression"
         }
       ]
+    },
+    "_list_separator": {
+      "type": "STRING",
+      "value": ","
+    },
+    "_quoted_string": {
+      "type": "PATTERN",
+      "value": "\"[^\"]*\""
+    },
+    "_reference": {
+      "type": "PATTERN",
+      "value": "[a-zA-Z0-9_]+"
+    },
+    "_name_or_string": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "_reference"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_quoted_string"
+        }
+      ]
+    },
+    "_alias": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "STRING",
+              "value": "as"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "FIELD",
+          "name": "alias",
+          "content": {
+            "type": "SYMBOL",
+            "name": "alias"
+          }
+        }
+      ]
+    },
+    "alias": {
+      "type": "SYMBOL",
+      "name": "_name_or_string"
     },
     "select_statement": {
       "type": "SEQ",
@@ -33,37 +91,127 @@
       ]
     },
     "select_list": {
-      "type": "CHOICE",
+      "type": "SEQ",
       "members": [
         {
-          "type": "STRING",
-          "value": "*"
+          "type": "SYMBOL",
+          "name": "select_list_item"
         },
         {
-          "type": "REPEAT1",
+          "type": "REPEAT",
           "content": {
-            "type": "SYMBOL",
-            "name": "column_name"
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "_list_separator"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "select_list_item"
+              }
+            ]
           }
         }
       ]
     },
-    "_select_list_separator": {
-      "type": "CHOICE",
+    "column_name": {
+      "type": "SEQ",
       "members": [
         {
-          "type": "STRING",
-          "value": ","
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "_column_table_reference"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
         },
         {
-          "type": "STRING",
-          "value": ","
+          "type": "SYMBOL",
+          "name": "_name_or_string"
         }
       ]
     },
-    "column_name": {
-      "type": "PATTERN",
-      "value": "[a-zA-Z0-9_]+"
+    "select_list_item": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "FIELD",
+          "name": "reference",
+          "content": {
+            "type": "SYMBOL",
+            "name": "column_name"
+          }
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "_alias"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        }
+      ]
+    },
+    "_column_table_reference": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "FIELD",
+          "name": "column_table_reference",
+          "content": {
+            "type": "SYMBOL",
+            "name": "_name_or_string"
+          }
+        },
+        {
+          "type": "STRING",
+          "value": "."
+        }
+      ]
+    },
+    "table_expression": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "PATTERN",
+          "value": "from",
+          "flags": "i"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "table_name"
+        }
+      ]
+    },
+    "table_name": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "_name_or_string"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "_alias"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        }
+      ]
     }
   },
   "extras": [

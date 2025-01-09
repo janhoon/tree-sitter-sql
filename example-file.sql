@@ -1,6 +1,6 @@
 select
 hello,
-"world",
-a.col,
+"world" as b,
+a.col d
 from
 table as a

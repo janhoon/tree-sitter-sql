@@ -1,17 +1,53 @@
 [
   {
+    "type": "alias",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "column_name",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "select_list",
     "named": true,
     "fields": {},
     "children": {
       "multiple": true,
-      "required": false,
+      "required": true,
       "types": [
         {
-          "type": "column_name",
+          "type": "select_list_item",
           "named": true
         }
       ]
+    }
+  },
+  {
+    "type": "select_list_item",
+    "named": true,
+    "fields": {
+      "alias": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "alias",
+            "named": true
+          }
+        ]
+      },
+      "reference": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "column_name",
+            "named": true
+          }
+        ]
+      }
     }
   },
   {
@@ -41,16 +77,55 @@
         {
           "type": "select_statement",
           "named": true
+        },
+        {
+          "type": "table_expression",
+          "named": true
         }
       ]
     }
   },
   {
-    "type": "*",
+    "type": "table_expression",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "table_name",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "table_name",
+    "named": true,
+    "fields": {
+      "alias": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "alias",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": ",",
     "named": false
   },
   {
-    "type": "column_name",
-    "named": true
+    "type": ".",
+    "named": false
+  },
+  {
+    "type": "as",
+    "named": false
   }
 ]
