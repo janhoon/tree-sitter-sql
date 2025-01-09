@@ -1,1 +1,6 @@
-select hello, "world",
+select
+hello,
+"world",
+a.col,
+from
+table as a

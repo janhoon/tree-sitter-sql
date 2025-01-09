@@ -27,7 +27,7 @@ module.exports = grammar({
 
     select_list: ($) => choice(keywords.WILDCARD, repeat1($.column_name)),
 
-    _select_list_separator: ($) => choice(",", ","),
+    _select_list_separator: ($) => ",",
 
     column_name: ($) => /[a-zA-Z0-9_]+/,
   },
