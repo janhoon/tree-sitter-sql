@@ -11,8 +11,6 @@ module.exports = {
     GROUP_BY: token(prec(10, /group\s+by/i)),
     HAVING: token(prec(10, /having/i)),
     ORDER_BY: token(prec(10, /order\s+by/i)),
-    ORDER: token(prec(10, /order/i)),
-    BY: token(prec(10, /by/i)),
     LIMIT: token(prec(10, /limit/i)),
     OFFSET: token(prec(10, /offset/i)),
     
@@ -51,6 +49,12 @@ module.exports = {
     BETWEEN: token(prec(10, /between/i)),
     LIKE: token(prec(10, /like/i)),
     ILIKE: token(prec(10, /ilike/i)),
+    
+    // Order by
+    ASC: token(prec(10, /asc/i)),
+    DESC: token(prec(10, /desc/i)),
+    NULLS_FIRST: token(prec(10, /nulls\s+first/i)),
+    NULLS_LAST: token(prec(10, /nulls\s+last/i)),
     
     // Data types
     INTEGER: token(prec(10, /integer|int/i)),

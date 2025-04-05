@@ -2,7 +2,7 @@
 Simple select from table
 ===
 
-SELECT * FROM table;
+SELECT * FROM some_random_table;
 
 ---
 

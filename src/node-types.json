@@ -1,122 +1,5 @@
 [
   {
-    "type": "alter_column_action",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": false,
-      "types": [
-        {
-          "type": "binary_expression",
-          "named": true
-        },
-        {
-          "type": "boolean_literal",
-          "named": true
-        },
-        {
-          "type": "case_expression",
-          "named": true
-        },
-        {
-          "type": "cast_expression",
-          "named": true
-        },
-        {
-          "type": "column_reference",
-          "named": true
-        },
-        {
-          "type": "data_type",
-          "named": true
-        },
-        {
-          "type": "function_call",
-          "named": true
-        },
-        {
-          "type": "null_literal",
-          "named": true
-        },
-        {
-          "type": "number_literal",
-          "named": true
-        },
-        {
-          "type": "parenthesized_expression",
-          "named": true
-        },
-        {
-          "type": "string_literal",
-          "named": true
-        },
-        {
-          "type": "subquery",
-          "named": true
-        },
-        {
-          "type": "unary_expression",
-          "named": true
-        },
-        {
-          "type": "wildcard",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "alter_table_action",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "alter_column_action",
-          "named": true
-        },
-        {
-          "type": "column_definition",
-          "named": true
-        },
-        {
-          "type": "column_name",
-          "named": true
-        },
-        {
-          "type": "reference",
-          "named": true
-        },
-        {
-          "type": "table_constraint",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "alter_table_statement",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "alter_table_action",
-          "named": true
-        },
-        {
-          "type": "table_reference",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
     "type": "binary_expression",
     "named": true,
     "fields": {},
@@ -162,10 +45,6 @@
         },
         {
           "type": "string_literal",
-          "named": true
-        },
-        {
-          "type": "subquery",
           "named": true
         },
         {
@@ -237,10 +116,6 @@
           "named": true
         },
         {
-          "type": "subquery",
-          "named": true
-        },
-        {
           "type": "unary_expression",
           "named": true
         },
@@ -308,150 +183,11 @@
           "named": true
         },
         {
-          "type": "subquery",
-          "named": true
-        },
-        {
           "type": "unary_expression",
           "named": true
         },
         {
           "type": "wildcard",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "check_constraint",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "binary_expression",
-          "named": true
-        },
-        {
-          "type": "boolean_literal",
-          "named": true
-        },
-        {
-          "type": "case_expression",
-          "named": true
-        },
-        {
-          "type": "cast_expression",
-          "named": true
-        },
-        {
-          "type": "column_reference",
-          "named": true
-        },
-        {
-          "type": "function_call",
-          "named": true
-        },
-        {
-          "type": "null_literal",
-          "named": true
-        },
-        {
-          "type": "number_literal",
-          "named": true
-        },
-        {
-          "type": "parenthesized_expression",
-          "named": true
-        },
-        {
-          "type": "string_literal",
-          "named": true
-        },
-        {
-          "type": "subquery",
-          "named": true
-        },
-        {
-          "type": "unary_expression",
-          "named": true
-        },
-        {
-          "type": "wildcard",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "column_constraint",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": false,
-      "types": [
-        {
-          "type": "check_constraint",
-          "named": true
-        },
-        {
-          "type": "default_constraint",
-          "named": true
-        },
-        {
-          "type": "foreign_key_constraint",
-          "named": true
-        },
-        {
-          "type": "primary_key_constraint",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "column_definition",
-    "named": true,
-    "fields": {
-      "name": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "reference",
-            "named": true
-          }
-        ]
-      }
-    },
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "column_constraint",
-          "named": true
-        },
-        {
-          "type": "data_type",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "column_name",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "column_reference",
           "named": true
         }
       ]
@@ -484,59 +220,6 @@
     }
   },
   {
-    "type": "create_table_statement",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "column_definition",
-          "named": true
-        },
-        {
-          "type": "table_constraint",
-          "named": true
-        },
-        {
-          "type": "table_reference",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "cte_definition",
-    "named": true,
-    "fields": {
-      "name": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "reference",
-            "named": true
-          }
-        ]
-      }
-    },
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "column_name",
-          "named": true
-        },
-        {
-          "type": "select_statement",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
     "type": "data_type",
     "named": true,
     "fields": {},
@@ -546,111 +229,6 @@
       "types": [
         {
           "type": "number_literal",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "default_constraint",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "binary_expression",
-          "named": true
-        },
-        {
-          "type": "boolean_literal",
-          "named": true
-        },
-        {
-          "type": "case_expression",
-          "named": true
-        },
-        {
-          "type": "cast_expression",
-          "named": true
-        },
-        {
-          "type": "column_reference",
-          "named": true
-        },
-        {
-          "type": "function_call",
-          "named": true
-        },
-        {
-          "type": "null_literal",
-          "named": true
-        },
-        {
-          "type": "number_literal",
-          "named": true
-        },
-        {
-          "type": "parenthesized_expression",
-          "named": true
-        },
-        {
-          "type": "string_literal",
-          "named": true
-        },
-        {
-          "type": "subquery",
-          "named": true
-        },
-        {
-          "type": "unary_expression",
-          "named": true
-        },
-        {
-          "type": "wildcard",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "delete_statement",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "returning_clause",
-          "named": true
-        },
-        {
-          "type": "table_reference",
-          "named": true
-        },
-        {
-          "type": "where_clause",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "drop_statement",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "reference",
-          "named": true
-        },
-        {
-          "type": "table_reference",
           "named": true
         }
       ]
@@ -705,34 +283,11 @@
           "named": true
         },
         {
-          "type": "subquery",
-          "named": true
-        },
-        {
           "type": "unary_expression",
           "named": true
         },
         {
           "type": "wildcard",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "foreign_key_constraint",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "column_name",
-          "named": true
-        },
-        {
-          "type": "table_reference",
           "named": true
         }
       ]
@@ -802,10 +357,6 @@
           "named": true
         },
         {
-          "type": "subquery",
-          "named": true
-        },
-        {
           "type": "unary_expression",
           "named": true
         },
@@ -832,249 +383,6 @@
     }
   },
   {
-    "type": "group_by_clause",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "binary_expression",
-          "named": true
-        },
-        {
-          "type": "boolean_literal",
-          "named": true
-        },
-        {
-          "type": "case_expression",
-          "named": true
-        },
-        {
-          "type": "cast_expression",
-          "named": true
-        },
-        {
-          "type": "column_reference",
-          "named": true
-        },
-        {
-          "type": "function_call",
-          "named": true
-        },
-        {
-          "type": "null_literal",
-          "named": true
-        },
-        {
-          "type": "number_literal",
-          "named": true
-        },
-        {
-          "type": "parenthesized_expression",
-          "named": true
-        },
-        {
-          "type": "string_literal",
-          "named": true
-        },
-        {
-          "type": "subquery",
-          "named": true
-        },
-        {
-          "type": "unary_expression",
-          "named": true
-        },
-        {
-          "type": "wildcard",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "having_clause",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "binary_expression",
-          "named": true
-        },
-        {
-          "type": "boolean_literal",
-          "named": true
-        },
-        {
-          "type": "case_expression",
-          "named": true
-        },
-        {
-          "type": "cast_expression",
-          "named": true
-        },
-        {
-          "type": "column_reference",
-          "named": true
-        },
-        {
-          "type": "function_call",
-          "named": true
-        },
-        {
-          "type": "null_literal",
-          "named": true
-        },
-        {
-          "type": "number_literal",
-          "named": true
-        },
-        {
-          "type": "parenthesized_expression",
-          "named": true
-        },
-        {
-          "type": "string_literal",
-          "named": true
-        },
-        {
-          "type": "subquery",
-          "named": true
-        },
-        {
-          "type": "unary_expression",
-          "named": true
-        },
-        {
-          "type": "wildcard",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "insert_statement",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "column_name",
-          "named": true
-        },
-        {
-          "type": "returning_clause",
-          "named": true
-        },
-        {
-          "type": "select_statement",
-          "named": true
-        },
-        {
-          "type": "table_reference",
-          "named": true
-        },
-        {
-          "type": "values_clause",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "join_condition",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "binary_expression",
-          "named": true
-        },
-        {
-          "type": "boolean_literal",
-          "named": true
-        },
-        {
-          "type": "case_expression",
-          "named": true
-        },
-        {
-          "type": "cast_expression",
-          "named": true
-        },
-        {
-          "type": "column_name",
-          "named": true
-        },
-        {
-          "type": "column_reference",
-          "named": true
-        },
-        {
-          "type": "function_call",
-          "named": true
-        },
-        {
-          "type": "null_literal",
-          "named": true
-        },
-        {
-          "type": "number_literal",
-          "named": true
-        },
-        {
-          "type": "parenthesized_expression",
-          "named": true
-        },
-        {
-          "type": "string_literal",
-          "named": true
-        },
-        {
-          "type": "subquery",
-          "named": true
-        },
-        {
-          "type": "unary_expression",
-          "named": true
-        },
-        {
-          "type": "wildcard",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "joined_table",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "join_condition",
-          "named": true
-        },
-        {
-          "type": "table_reference",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
     "type": "limit_clause",
     "named": true,
     "fields": {},
@@ -1090,11 +398,6 @@
     }
   },
   {
-    "type": "null_literal",
-    "named": true,
-    "fields": {}
-  },
-  {
     "type": "object_reference",
     "named": true,
     "fields": {},
@@ -1102,14 +405,6 @@
       "multiple": false,
       "required": true,
       "types": [
-        {
-          "type": "joined_table",
-          "named": true
-        },
-        {
-          "type": "subquery",
-          "named": true
-        },
         {
           "type": "table_reference",
           "named": true
@@ -1133,6 +428,11 @@
     }
   },
   {
+    "type": "order_by_ascending",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "order_by_clause",
     "named": true,
     "fields": {},
@@ -1148,66 +448,82 @@
     }
   },
   {
+    "type": "order_by_descending",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "order_by_item",
     "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "binary_expression",
-          "named": true
-        },
-        {
-          "type": "boolean_literal",
-          "named": true
-        },
-        {
-          "type": "case_expression",
-          "named": true
-        },
-        {
-          "type": "cast_expression",
-          "named": true
-        },
-        {
-          "type": "column_reference",
-          "named": true
-        },
-        {
-          "type": "function_call",
-          "named": true
-        },
-        {
-          "type": "null_literal",
-          "named": true
-        },
-        {
-          "type": "number_literal",
-          "named": true
-        },
-        {
-          "type": "parenthesized_expression",
-          "named": true
-        },
-        {
-          "type": "string_literal",
-          "named": true
-        },
-        {
-          "type": "subquery",
-          "named": true
-        },
-        {
-          "type": "unary_expression",
-          "named": true
-        },
-        {
-          "type": "wildcard",
-          "named": true
-        }
-      ]
+    "fields": {
+      "expression": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "binary_expression",
+            "named": true
+          },
+          {
+            "type": "boolean_literal",
+            "named": true
+          },
+          {
+            "type": "case_expression",
+            "named": true
+          },
+          {
+            "type": "cast_expression",
+            "named": true
+          },
+          {
+            "type": "column_reference",
+            "named": true
+          },
+          {
+            "type": "function_call",
+            "named": true
+          },
+          {
+            "type": "null_literal",
+            "named": true
+          },
+          {
+            "type": "number_literal",
+            "named": true
+          },
+          {
+            "type": "parenthesized_expression",
+            "named": true
+          },
+          {
+            "type": "string_literal",
+            "named": true
+          },
+          {
+            "type": "unary_expression",
+            "named": true
+          },
+          {
+            "type": "wildcard",
+            "named": true
+          }
+        ]
+      },
+      "order": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "order_by_ascending",
+            "named": true
+          },
+          {
+            "type": "order_by_descending",
+            "named": true
+          }
+        ]
+      }
     }
   },
   {
@@ -1259,10 +575,6 @@
           "named": true
         },
         {
-          "type": "subquery",
-          "named": true
-        },
-        {
           "type": "unary_expression",
           "named": true
         },
@@ -1274,29 +586,9 @@
     }
   },
   {
-    "type": "primary_key_constraint",
-    "named": true,
-    "fields": {}
-  },
-  {
     "type": "reference",
     "named": true,
     "fields": {}
-  },
-  {
-    "type": "returning_clause",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": false,
-      "types": [
-        {
-          "type": "select_list_item",
-          "named": true
-        }
-      ]
-    }
   },
   {
     "type": "select_list",
@@ -1372,10 +664,6 @@
             "named": true
           },
           {
-            "type": "subquery",
-            "named": true
-          },
-          {
             "type": "unary_expression",
             "named": true
           },
@@ -1400,14 +688,6 @@
           "named": true
         },
         {
-          "type": "group_by_clause",
-          "named": true
-        },
-        {
-          "type": "having_clause",
-          "named": true
-        },
-        {
           "type": "limit_clause",
           "named": true
         },
@@ -1421,14 +701,6 @@
         },
         {
           "type": "select_list",
-          "named": true
-        },
-        {
-          "type": "where_clause",
-          "named": true
-        },
-        {
-          "type": "with_clause",
           "named": true
         }
       ]
@@ -1444,31 +716,7 @@
       "required": false,
       "types": [
         {
-          "type": "alter_table_statement",
-          "named": true
-        },
-        {
-          "type": "create_table_statement",
-          "named": true
-        },
-        {
-          "type": "delete_statement",
-          "named": true
-        },
-        {
-          "type": "drop_statement",
-          "named": true
-        },
-        {
-          "type": "insert_statement",
-          "named": true
-        },
-        {
           "type": "select_statement",
-          "named": true
-        },
-        {
-          "type": "update_statement",
           "named": true
         }
       ]
@@ -1478,96 +726,6 @@
     "type": "string_literal",
     "named": true,
     "fields": {}
-  },
-  {
-    "type": "subquery",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "reference",
-          "named": true
-        },
-        {
-          "type": "select_statement",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "table_constraint",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "binary_expression",
-          "named": true
-        },
-        {
-          "type": "boolean_literal",
-          "named": true
-        },
-        {
-          "type": "case_expression",
-          "named": true
-        },
-        {
-          "type": "cast_expression",
-          "named": true
-        },
-        {
-          "type": "column_name",
-          "named": true
-        },
-        {
-          "type": "column_reference",
-          "named": true
-        },
-        {
-          "type": "foreign_key_constraint",
-          "named": true
-        },
-        {
-          "type": "function_call",
-          "named": true
-        },
-        {
-          "type": "null_literal",
-          "named": true
-        },
-        {
-          "type": "number_literal",
-          "named": true
-        },
-        {
-          "type": "parenthesized_expression",
-          "named": true
-        },
-        {
-          "type": "string_literal",
-          "named": true
-        },
-        {
-          "type": "subquery",
-          "named": true
-        },
-        {
-          "type": "unary_expression",
-          "named": true
-        },
-        {
-          "type": "wildcard",
-          "named": true
-        }
-      ]
-    }
   },
   {
     "type": "table_reference",
@@ -1664,194 +822,11 @@
           "named": true
         },
         {
-          "type": "subquery",
-          "named": true
-        },
-        {
           "type": "unary_expression",
           "named": true
         },
         {
           "type": "wildcard",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "update_item",
-    "named": true,
-    "fields": {
-      "column": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "column_name",
-            "named": true
-          }
-        ]
-      },
-      "value": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "binary_expression",
-            "named": true
-          },
-          {
-            "type": "boolean_literal",
-            "named": true
-          },
-          {
-            "type": "case_expression",
-            "named": true
-          },
-          {
-            "type": "cast_expression",
-            "named": true
-          },
-          {
-            "type": "column_reference",
-            "named": true
-          },
-          {
-            "type": "function_call",
-            "named": true
-          },
-          {
-            "type": "null_literal",
-            "named": true
-          },
-          {
-            "type": "number_literal",
-            "named": true
-          },
-          {
-            "type": "parenthesized_expression",
-            "named": true
-          },
-          {
-            "type": "string_literal",
-            "named": true
-          },
-          {
-            "type": "subquery",
-            "named": true
-          },
-          {
-            "type": "unary_expression",
-            "named": true
-          },
-          {
-            "type": "wildcard",
-            "named": true
-          }
-        ]
-      }
-    }
-  },
-  {
-    "type": "update_statement",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "returning_clause",
-          "named": true
-        },
-        {
-          "type": "table_reference",
-          "named": true
-        },
-        {
-          "type": "update_item",
-          "named": true
-        },
-        {
-          "type": "where_clause",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "value_list",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "binary_expression",
-          "named": true
-        },
-        {
-          "type": "boolean_literal",
-          "named": true
-        },
-        {
-          "type": "case_expression",
-          "named": true
-        },
-        {
-          "type": "cast_expression",
-          "named": true
-        },
-        {
-          "type": "column_reference",
-          "named": true
-        },
-        {
-          "type": "function_call",
-          "named": true
-        },
-        {
-          "type": "null_literal",
-          "named": true
-        },
-        {
-          "type": "number_literal",
-          "named": true
-        },
-        {
-          "type": "parenthesized_expression",
-          "named": true
-        },
-        {
-          "type": "string_literal",
-          "named": true
-        },
-        {
-          "type": "subquery",
-          "named": true
-        },
-        {
-          "type": "unary_expression",
-          "named": true
-        },
-        {
-          "type": "wildcard",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "values_clause",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "value_list",
           "named": true
         }
       ]
@@ -1903,10 +878,6 @@
           },
           {
             "type": "string_literal",
-            "named": true
-          },
-          {
-            "type": "subquery",
             "named": true
           },
           {
@@ -1964,10 +935,6 @@
             "named": true
           },
           {
-            "type": "subquery",
-            "named": true
-          },
-          {
             "type": "unary_expression",
             "named": true
           },
@@ -1977,84 +944,6 @@
           }
         ]
       }
-    }
-  },
-  {
-    "type": "where_clause",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "binary_expression",
-          "named": true
-        },
-        {
-          "type": "boolean_literal",
-          "named": true
-        },
-        {
-          "type": "case_expression",
-          "named": true
-        },
-        {
-          "type": "cast_expression",
-          "named": true
-        },
-        {
-          "type": "column_reference",
-          "named": true
-        },
-        {
-          "type": "function_call",
-          "named": true
-        },
-        {
-          "type": "null_literal",
-          "named": true
-        },
-        {
-          "type": "number_literal",
-          "named": true
-        },
-        {
-          "type": "parenthesized_expression",
-          "named": true
-        },
-        {
-          "type": "string_literal",
-          "named": true
-        },
-        {
-          "type": "subquery",
-          "named": true
-        },
-        {
-          "type": "unary_expression",
-          "named": true
-        },
-        {
-          "type": "wildcard",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "with_clause",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "cte_definition",
-          "named": true
-        }
-      ]
     }
   },
   {
@@ -2124,6 +1013,10 @@
   {
     "type": ">=",
     "named": false
+  },
+  {
+    "type": "null_literal",
+    "named": true
   },
   {
     "type": "number_literal",
