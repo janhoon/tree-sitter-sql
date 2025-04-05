@@ -36,7 +36,7 @@ module.exports = grammar({
     ),
 
     number_literal: () => /[0-9]+(\.[0-9]+)?([eE][+-]?[0-9]+)?/,
-    string_literal: ($) => prec.right(0, $._single_quoted_reference),
+    string_literal: ($) => $._single_quoted_reference,
     boolean_literal: () => choice(/true/i, /false/i),
     null_literal: () => keywords.NULL,
 
@@ -48,8 +48,6 @@ module.exports = grammar({
       $.column_reference,
       $._literal,
       $.function_call,
-      $.binary_expression,
-      $.unary_expression,
       $.parenthesized_expression,
       $.case_expression,
       $.cast_expression
@@ -72,32 +70,6 @@ module.exports = grammar({
     function_arguments: ($) => seq(
       $._expression,
       repeat(seq($._list_separator, $._expression))
-    ),
-
-    binary_expression: ($) => choice(
-      prec.left(2, seq($._expression, '+', $._expression)),
-      prec.left(2, seq($._expression, '-', $._expression)),
-      prec.left(3, seq($._expression, '*', $._expression)),
-      prec.left(3, seq($._expression, '/', $._expression)),
-      prec.left(3, seq($._expression, '%', $._expression)),
-      prec.left(1, seq($._expression, keywords.AND, $._expression)),
-      prec.left(1, seq($._expression, keywords.OR, $._expression)),
-      prec.left(0, seq($._expression, '=', $._expression)),
-      prec.left(0, seq($._expression, '<>', $._expression)),
-      prec.left(0, seq($._expression, '!=', $._expression)),
-      prec.left(0, seq($._expression, '<', $._expression)),
-      prec.left(0, seq($._expression, '<=', $._expression)),
-      prec.left(0, seq($._expression, '>', $._expression)),
-      prec.left(0, seq($._expression, '>=', $._expression)),
-      prec.left(0, seq($._expression, keywords.LIKE, $._expression)),
-      prec.left(0, seq($._expression, keywords.ILIKE, $._expression)),
-      prec.left(0, seq($._expression, keywords.IN, $._expression))
-    ),
-
-    unary_expression: ($) => choice(
-      prec(4, seq('-', $._expression)),
-      prec(4, seq('+', $._expression)),
-      prec(4, seq(keywords.NOT, $._expression))
     ),
 
     parenthesized_expression: ($) => seq(
@@ -185,9 +157,9 @@ module.exports = grammar({
       repeat(seq($._list_separator, $.object_reference))
     ),
 
-    object_reference: ($) => prec.right(1, choice(
+    object_reference: ($) => choice(
       $.table_reference,
-    )),
+    ),
 
     _database_schema_table_reference: ($) => seq(
       field("database", $.reference),
