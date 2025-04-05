@@ -2,7 +2,7 @@
 Simple SELECT query
 =======
 
-SELECT co1, "col1", 1, test(), case when 1 then 2 else 3 end;
+SELECT co1, "col1", 1, test();
 
 ---
 
@@ -20,7 +20,19 @@ SELECT co1, "col1", 1, test(), case when 1 then 2 else 3 end;
           (number_literal)))
       (select_list_item
         (expression
-          (function_call)))
+          (function_call))))))
+
+=======
+SELECT case statement
+=======
+
+SELECT case when 1 then 2 else 3 end;
+
+---
+
+(source_file
+  (select_statement
+    (select_list
       (select_list_item
         (expression
           (case_expression
