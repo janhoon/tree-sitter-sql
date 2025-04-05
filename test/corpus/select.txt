@@ -2,7 +2,7 @@
 Simple SELECT query
 =======
 
-SELECT co1, "col1", 1, test();
+SELECT co1, "col1", 1, test(), case when 1 then 2 else 3 end;
 
 ---
 
@@ -20,7 +20,18 @@ SELECT co1, "col1", 1, test();
           (number_literal)))
       (select_list_item
         (expression
-          (function_call))))))
+          (function_call)))
+      (select_list_item
+        (expression
+          (case_expression
+            (when_clause
+              (expression
+                (number_literal))
+              (expression
+                (number_literal)))
+            (else_clause
+              (expression
+                (number_literal)))))))))
 
 =======
 Simple SELECT query with alias
