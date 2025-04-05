@@ -14,10 +14,30 @@ SELECT co1, "col1", 1, test();
           (column_reference)))
       (select_list_item
         (expression
-          (column_reference)))
+          (string_literal)))
       (select_list_item
         (expression
           (number_literal)))
       (select_list_item
         (expression
           (function_call))))))
+
+=======
+Simple SELECT query with alias
+=======
+
+SELECT co1 AS "col1", col2 "col2";
+
+---
+
+(source_file
+  (select_statement
+    (select_list
+      (select_list_item
+        (expression
+          (column_reference))
+        (alias))
+      (select_list_item
+        (expression
+          (column_reference))
+        (alias)))))

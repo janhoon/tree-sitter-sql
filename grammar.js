@@ -18,8 +18,7 @@ module.exports = grammar({
     [$.table_reference, $.subquery],
     [$.joined_table, $.table_reference],
     [$.joined_table],
-    [$.subquery],
-    [$.subquery, $._alias]
+    [$.subquery]
   ],
 
   rules: {
@@ -43,7 +42,7 @@ module.exports = grammar({
     _quoted_string: () => /"[^"]*"/,
     _single_quoted_string: () => /'[^']*'/,
     _reference: () => /[a-zA-Z][a-zA-Z0-9_]*/,
-    _name_or_string: ($) => prec.right(1, choice($._reference, $._quoted_string)),
+    _name_or_string: ($) => choice($._quoted_string, $._reference),
     _literal: ($) => choice(
       $.number_literal,
       $.string_literal,
@@ -56,8 +55,8 @@ module.exports = grammar({
     boolean_literal: () => choice(/true/i, /false/i),
     null_literal: () => keywords.NULL,
 
-    _alias: ($) => prec.right(2, seq(optional(keywords.AS), field("alias", $.alias))),
-    alias: ($) => prec.right(2, $._name_or_string),
+    _alias: ($) => seq(optional(keywords.AS), field("alias", $.alias)),
+    alias: ($) => $._name_or_string,
 
     // Expressions
     expression: ($) => choice(
@@ -172,7 +171,7 @@ module.exports = grammar({
     ),
 
     // SELECT statement
-    select_statement: ($) => prec.right(1, seq(
+    select_statement: ($) => seq(
       optional($.with_clause),
       keywords.SELECT,
       optional(choice(keywords.DISTINCT, keywords.ALL)),
@@ -184,7 +183,7 @@ module.exports = grammar({
       optional($.order_by_clause),
       optional($.limit_clause),
       optional($.offset_clause)
-    )),
+    ),
 
     with_clause: ($) => seq(
       keywords.WITH,
