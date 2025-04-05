@@ -4,6 +4,7 @@
 module.exports = {
   keywords: {
     // Basic query keywords
+    WILDCARD: token(prec(10, /\*/i)),
     SELECT: token(prec(10, /select/i)),
     FROM: token(prec(10, /from/i)),
     WHERE: token(prec(10, /where/i)),

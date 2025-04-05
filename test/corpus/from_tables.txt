@@ -1,0 +1,97 @@
+===
+Simple select from table
+===
+
+SELECT * FROM table;
+
+---
+
+(source_file
+  (select_statement
+    (select_list
+      (select_list_item
+        expression: (wildcard)))
+    (from_clause
+      (object_reference
+        (table_reference
+          name: (reference))))))
+
+===
+Select from table with alias
+===
+
+SELECT * FROM table AS t;
+
+---
+
+(source_file
+  (select_statement
+    (select_list
+      (select_list_item
+        expression: (wildcard)))
+    (from_clause
+      (object_reference
+        (table_reference
+          name: (reference)
+          alias: (reference))))))
+
+===
+Select with table alias
+===
+
+SELECT t.col FROM table1 AS t;
+
+---
+
+(source_file
+  (select_statement
+    (select_list
+      (select_list_item
+        expression: (column_reference
+            table_ref: (reference)
+            column_ref: (reference))))
+    (from_clause
+      (object_reference
+        (table_reference
+          name: (reference)
+          alias: (reference))))))
+
+===
+Select with table with schema
+===
+
+SELECT * FROM schema.table;
+
+---
+
+(source_file
+  (select_statement
+    (select_list
+      (select_list_item
+        expression: (wildcard)))
+    (from_clause
+      (object_reference
+        (table_reference
+          schema: (reference)
+          name: (reference))))))
+
+===
+Select with table with schema and database
+===
+
+SELECT * FROM database.schema.table;
+
+---
+
+(source_file
+  (select_statement
+    (select_list
+      (select_list_item
+        expression: (wildcard)))
+    (from_clause
+      (object_reference
+        (table_reference
+          database: (reference)
+          schema: (reference)
+          name: (reference))))))
+

@@ -13,12 +13,13 @@ module.exports = grammar({
   name: "sql",
 
   conflicts: $ => [
-    [$._name_or_string, $.string_literal],
+    [$.reference, $.string_literal],
     [$.table_reference, $.joined_table],
     [$.table_reference, $.subquery],
     [$.joined_table, $.table_reference],
     [$.joined_table],
-    [$.subquery]
+    [$.subquery],
+    [$.table_reference],
   ],
 
   rules: {
@@ -39,10 +40,10 @@ module.exports = grammar({
 
     // Basic elements
     _list_separator: () => ",",
-    _quoted_string: () => /"[^"]*"/,
-    _single_quoted_string: () => /'[^']*'/,
+    _quoted_reference: () => /"[^"]*"/,
+    _single_quoted_reference: () => /'[^']*'/,
     _reference: () => /[a-zA-Z][a-zA-Z0-9_]*/,
-    _name_or_string: ($) => choice($._quoted_string, $._reference),
+    reference: ($) => choice($._quoted_reference, $._reference),
     _literal: ($) => choice(
       $.number_literal,
       $.string_literal,
@@ -51,15 +52,15 @@ module.exports = grammar({
     ),
 
     number_literal: () => /[0-9]+(\.[0-9]+)?([eE][+-]?[0-9]+)?/,
-    string_literal: ($) => prec.right(0, choice($._quoted_string, $._single_quoted_string)),
+    string_literal: ($) => prec.right(0, $._single_quoted_reference),
     boolean_literal: () => choice(/true/i, /false/i),
     null_literal: () => keywords.NULL,
 
-    _alias: ($) => seq(optional(keywords.AS), field("alias", $.alias)),
-    alias: ($) => $._name_or_string,
+    _alias: ($) => seq(optional(keywords.AS), $.reference),
 
     // Expressions
-    expression: ($) => choice(
+    _expression: ($) => choice(
+      $.wildcard,
       $.column_reference,
       $._literal,
       $.function_call,
@@ -71,58 +72,60 @@ module.exports = grammar({
       $.subquery
     ),
 
+    wildcard: () => keywords.WILDCARD,
+
     column_reference: ($) => seq(
-      optional(seq(field("table", $._name_or_string), '.')),
-      field("column", $._name_or_string)
+      optional(seq(field("table_ref", $.reference), '.')),
+      field("column_ref", $.reference)
     ),
 
     function_call: ($) => seq(
-      field("function_name", $._name_or_string),
+       $._reference,
       '(',
       optional($.function_arguments),
       ')'
     ),
 
     function_arguments: ($) => seq(
-      $.expression,
-      repeat(seq($._list_separator, $.expression))
+      $._expression,
+      repeat(seq($._list_separator, $._expression))
     ),
 
     binary_expression: ($) => choice(
-      prec.left(2, seq($.expression, '+', $.expression)),
-      prec.left(2, seq($.expression, '-', $.expression)),
-      prec.left(3, seq($.expression, '*', $.expression)),
-      prec.left(3, seq($.expression, '/', $.expression)),
-      prec.left(3, seq($.expression, '%', $.expression)),
-      prec.left(1, seq($.expression, keywords.AND, $.expression)),
-      prec.left(1, seq($.expression, keywords.OR, $.expression)),
-      prec.left(0, seq($.expression, '=', $.expression)),
-      prec.left(0, seq($.expression, '<>', $.expression)),
-      prec.left(0, seq($.expression, '!=', $.expression)),
-      prec.left(0, seq($.expression, '<', $.expression)),
-      prec.left(0, seq($.expression, '<=', $.expression)),
-      prec.left(0, seq($.expression, '>', $.expression)),
-      prec.left(0, seq($.expression, '>=', $.expression)),
-      prec.left(0, seq($.expression, keywords.LIKE, $.expression)),
-      prec.left(0, seq($.expression, keywords.ILIKE, $.expression)),
-      prec.left(0, seq($.expression, keywords.IN, $.expression))
+      prec.left(2, seq($._expression, '+', $._expression)),
+      prec.left(2, seq($._expression, '-', $._expression)),
+      prec.left(3, seq($._expression, '*', $._expression)),
+      prec.left(3, seq($._expression, '/', $._expression)),
+      prec.left(3, seq($._expression, '%', $._expression)),
+      prec.left(1, seq($._expression, keywords.AND, $._expression)),
+      prec.left(1, seq($._expression, keywords.OR, $._expression)),
+      prec.left(0, seq($._expression, '=', $._expression)),
+      prec.left(0, seq($._expression, '<>', $._expression)),
+      prec.left(0, seq($._expression, '!=', $._expression)),
+      prec.left(0, seq($._expression, '<', $._expression)),
+      prec.left(0, seq($._expression, '<=', $._expression)),
+      prec.left(0, seq($._expression, '>', $._expression)),
+      prec.left(0, seq($._expression, '>=', $._expression)),
+      prec.left(0, seq($._expression, keywords.LIKE, $._expression)),
+      prec.left(0, seq($._expression, keywords.ILIKE, $._expression)),
+      prec.left(0, seq($._expression, keywords.IN, $._expression))
     ),
 
     unary_expression: ($) => choice(
-      prec(4, seq('-', $.expression)),
-      prec(4, seq('+', $.expression)),
-      prec(4, seq(keywords.NOT, $.expression))
+      prec(4, seq('-', $._expression)),
+      prec(4, seq('+', $._expression)),
+      prec(4, seq(keywords.NOT, $._expression))
     ),
 
     parenthesized_expression: ($) => seq(
       '(',
-      $.expression,
+      $._expression,
       ')'
     ),
 
     case_expression: ($) => seq(
       keywords.CASE,
-      optional($.expression),
+      optional($._expression),
       repeat1($.when_clause),
       optional($.else_clause),
       keywords.END
@@ -130,20 +133,20 @@ module.exports = grammar({
 
     when_clause: ($) => seq(
       keywords.WHEN,
-      $.expression,
+      field("when_expression", $._expression),
       keywords.THEN,
-      $.expression
+      field("then_expression", $._expression)
     ),
 
     else_clause: ($) => seq(
       keywords.ELSE,
-      $.expression
+      $._expression
     ),
 
     cast_expression: ($) => seq(
       keywords.CAST,
       '(',
-      $.expression,
+      $._expression,
       keywords.AS,
       $.data_type,
       ')'
@@ -193,7 +196,7 @@ module.exports = grammar({
     ),
 
     cte_definition: ($) => seq(
-      field("name", $._name_or_string),
+      field("name", $.reference),
       optional(seq(
         '(',
         $.column_name,
@@ -207,35 +210,54 @@ module.exports = grammar({
     ),
 
     select_list: ($) => seq(
-      choice(
-        seq(
-          $.select_list_item,
-          repeat(seq($._list_separator, $.select_list_item))
-        ),
-        '*'
+      seq(
+        $.select_list_item,
+        repeat(seq($._list_separator, $.select_list_item))
       )
     ),
 
     select_list_item: ($) => seq(
-      field("expression", $.expression),
-      optional($._alias)
+      field("expression", $._expression),
+      optional(field("alias", $._alias))
     ),
 
     from_clause: ($) => seq(
       keywords.FROM,
-      $.table_reference,
-      repeat(seq($._list_separator, $.table_reference))
+      $.object_reference,
+      repeat(seq($._list_separator, $.object_reference))
     ),
 
-    table_reference: ($) => prec.right(1, choice(
-      $.table_name,
+    object_reference: ($) => prec.right(1, choice(
+      $.table_reference,
       $.subquery,
       $.joined_table
     )),
 
-    table_name: ($) => seq(
-      field("name", $._name_or_string),
-      optional($._alias)
+    _database_schema_table_reference: ($) => seq(
+      field("database", $.reference),
+      '.',
+      field("schema", $.reference),
+      '.',
+      field("name", $.reference),
+      optional(field("alias", $._alias))
+    ),
+
+    _schema_table_reference: ($) => seq(
+      field("schema", $.reference),
+      '.',
+      field("name", $.reference),
+      optional(field("alias", $._alias))
+    ),
+
+    _direct_table_reference: ($) => seq(
+      field("name", $.reference),
+      optional(field("alias", $._alias))
+    ),
+
+    table_reference: ($) => choice(
+      prec(1, $._database_schema_table_reference),
+      prec(2, $._schema_table_reference),
+      $._direct_table_reference
     ),
 
     joined_table: ($) => prec.left(1, choice(
@@ -248,7 +270,7 @@ module.exports = grammar({
     )),
 
     join_condition: ($) => choice(
-      seq(keywords.ON, $.expression),
+      seq(keywords.ON, $._expression),
       seq(keywords.USING, '(', $.column_name, repeat(seq($._list_separator, $.column_name)), ')')
     ),
 
@@ -261,18 +283,18 @@ module.exports = grammar({
 
     where_clause: ($) => seq(
       keywords.WHERE,
-      $.expression
+      $._expression
     ),
 
     group_by_clause: ($) => seq(
       keywords.GROUP_BY,
-      $.expression,
-      repeat(seq($._list_separator, $.expression))
+      $._expression,
+      repeat(seq($._list_separator, $._expression))
     ),
 
     having_clause: ($) => seq(
       keywords.HAVING,
-      $.expression
+      $._expression
     ),
 
     order_by_clause: ($) => seq(
@@ -285,7 +307,7 @@ module.exports = grammar({
     ),
 
     order_by_item: ($) => seq(
-      $.expression,
+      $._expression,
       optional(choice(/asc/i, /desc/i)),
       optional(choice(/nulls first/i, /nulls last/i))
     ),
@@ -305,7 +327,7 @@ module.exports = grammar({
     insert_statement: ($) => seq(
       keywords.INSERT,
       keywords.INTO,
-      $.table_name,
+      $.table_reference,
       optional(seq(
         '(',
         $.column_name,
@@ -327,8 +349,8 @@ module.exports = grammar({
 
     value_list: ($) => seq(
       '(',
-      $.expression,
-      repeat(seq($._list_separator, $.expression)),
+      $._expression,
+      repeat(seq($._list_separator, $._expression)),
       ')'
     ),
 
@@ -346,7 +368,7 @@ module.exports = grammar({
     // UPDATE statement
     update_statement: ($) => seq(
       keywords.UPDATE,
-      $.table_name,
+      $.table_reference,
       keywords.SET,
       $.update_item,
       repeat(seq($._list_separator, $.update_item)),
@@ -357,14 +379,14 @@ module.exports = grammar({
     update_item: ($) => seq(
       field("column", $.column_name),
       '=',
-      field("value", $.expression)
+      field("value", $._expression)
     ),
 
     // DELETE statement
     delete_statement: ($) => seq(
       keywords.DELETE,
       keywords.FROM,
-      $.table_name,
+      $.table_reference,
       optional($.where_clause),
       optional($.returning_clause)
     ),
@@ -375,7 +397,7 @@ module.exports = grammar({
       optional(/temp|temporary/i),
       keywords.TABLE,
       optional(/if not exists/i),
-      $.table_name,
+      $.table_reference,
       '(',
       $.column_definition,
       repeat(seq($._list_separator, $.column_definition)),
@@ -384,7 +406,7 @@ module.exports = grammar({
     ),
 
     column_definition: ($) => seq(
-      field("name", $._name_or_string),
+      field("name", $.reference),
       $.data_type,
       repeat($.column_constraint)
     ),
@@ -403,7 +425,7 @@ module.exports = grammar({
 
     foreign_key_constraint: ($) => seq(
       keywords.REFERENCES,
-      $.table_name,
+      $.table_reference,
       optional(seq(
         '(',
         $.column_name,
@@ -417,27 +439,27 @@ module.exports = grammar({
     check_constraint: ($) => seq(
       keywords.CHECK,
       '(',
-      $.expression,
+      $._expression,
       ')'
     ),
 
     default_constraint: ($) => seq(
       keywords.DEFAULT,
-      $.expression
+      $._expression
     ),
 
     table_constraint: ($) => choice(
       seq(keywords.PRIMARY_KEY, '(', $.column_name, repeat(seq($._list_separator, $.column_name)), ')'),
       seq(keywords.UNIQUE, '(', $.column_name, repeat(seq($._list_separator, $.column_name)), ')'),
       seq(keywords.FOREIGN_KEY, '(', $.column_name, repeat(seq($._list_separator, $.column_name)), ')', $.foreign_key_constraint),
-      seq(keywords.CHECK, '(', $.expression, ')')
+      seq(keywords.CHECK, '(', $._expression, ')')
     ),
 
     // ALTER TABLE statement
     alter_table_statement: ($) => seq(
       keywords.ALTER,
       keywords.TABLE,
-      $.table_name,
+      $.table_reference,
       $.alter_table_action
     ),
 
@@ -446,11 +468,11 @@ module.exports = grammar({
       seq(/drop column/i, $.column_name),
       seq(/alter column/i, $.column_name, $.alter_column_action),
       seq(/add/i, $.table_constraint),
-      seq(/drop constraint/i, $._name_or_string)
+      seq(/drop constraint/i, $.reference)
     ),
 
     alter_column_action: ($) => choice(
-      seq(/set default/i, $.expression),
+      seq(/set default/i, $._expression),
       /drop default/i,
       /set not null/i,
       /drop not null/i,
@@ -461,11 +483,11 @@ module.exports = grammar({
     drop_statement: ($) => seq(
       keywords.DROP,
       choice(
-        seq(keywords.TABLE, optional(/if exists/i), $.table_name),
-        seq(/index/i, optional(/if exists/i), $._name_or_string),
-        seq(/view/i, optional(/if exists/i), $._name_or_string),
-        seq(/schema/i, optional(/if exists/i), $._name_or_string),
-        seq(/sequence/i, optional(/if exists/i), $._name_or_string)
+        seq(keywords.TABLE, optional(/if exists/i), $.table_reference),
+        seq(/index/i, optional(/if exists/i), $.reference),
+        seq(/view/i, optional(/if exists/i), $.reference),
+        seq(/schema/i, optional(/if exists/i), $.reference),
+        seq(/sequence/i, optional(/if exists/i), $.reference)
       )
     ),
 
