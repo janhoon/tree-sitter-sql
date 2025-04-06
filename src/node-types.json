@@ -1,1465 +1,1506 @@
 [
-  {
-    "type": "ALL",
-    "named": true,
-    "fields": {}
-  },
-  {
-    "type": "AS",
-    "named": true,
-    "fields": {}
-  },
-  {
-    "type": "ASC",
-    "named": true,
-    "fields": {}
-  },
-  {
-    "type": "BIGINT",
-    "named": true,
-    "fields": {}
-  },
-  {
-    "type": "BOOLEAN",
-    "named": true,
-    "fields": {}
-  },
-  {
-    "type": "CASE",
-    "named": true,
-    "fields": {}
-  },
-  {
-    "type": "CAST",
-    "named": true,
-    "fields": {}
-  },
-  {
-    "type": "CHAR",
-    "named": true,
-    "fields": {}
-  },
-  {
-    "type": "DATE",
-    "named": true,
-    "fields": {}
-  },
-  {
-    "type": "DECIMAL",
-    "named": true,
-    "fields": {}
-  },
-  {
-    "type": "DESC",
-    "named": true,
-    "fields": {}
-  },
-  {
-    "type": "DISTINCT",
-    "named": true,
-    "fields": {}
-  },
-  {
-    "type": "DOUBLE_PRECISION",
-    "named": true,
-    "fields": {}
-  },
-  {
-    "type": "ELSE",
-    "named": true,
-    "fields": {}
-  },
-  {
-    "type": "END",
-    "named": true,
-    "fields": {}
-  },
-  {
-    "type": "FROM",
-    "named": true,
-    "fields": {}
-  },
-  {
-    "type": "INTEGER",
-    "named": true,
-    "fields": {}
-  },
-  {
-    "type": "INTERVAL",
-    "named": true,
-    "fields": {}
-  },
-  {
-    "type": "JSON",
-    "named": true,
-    "fields": {}
-  },
-  {
-    "type": "JSONB",
-    "named": true,
-    "fields": {}
-  },
-  {
-    "type": "LIMIT",
-    "named": true,
-    "fields": {}
-  },
-  {
-    "type": "NULL",
-    "named": true,
-    "fields": {}
-  },
-  {
-    "type": "NULLS_FIRST",
-    "named": true,
-    "fields": {}
-  },
-  {
-    "type": "NULLS_LAST",
-    "named": true,
-    "fields": {}
-  },
-  {
-    "type": "NUMERIC",
-    "named": true,
-    "fields": {}
-  },
-  {
-    "type": "OFFSET",
-    "named": true,
-    "fields": {}
-  },
-  {
-    "type": "ORDER_BY",
-    "named": true,
-    "fields": {}
-  },
-  {
-    "type": "REAL",
-    "named": true,
-    "fields": {}
-  },
-  {
-    "type": "SELECT",
-    "named": true,
-    "fields": {}
-  },
-  {
-    "type": "SMALLINT",
-    "named": true,
-    "fields": {}
-  },
-  {
-    "type": "TEXT",
-    "named": true,
-    "fields": {}
-  },
-  {
-    "type": "THEN",
-    "named": true,
-    "fields": {}
-  },
-  {
-    "type": "TIME",
-    "named": true,
-    "fields": {}
-  },
-  {
-    "type": "TIMESTAMP",
-    "named": true,
-    "fields": {}
-  },
-  {
-    "type": "UUID",
-    "named": true,
-    "fields": {}
-  },
-  {
-    "type": "VARCHAR",
-    "named": true,
-    "fields": {}
-  },
-  {
-    "type": "WHEN",
-    "named": true,
-    "fields": {}
-  },
-  {
-    "type": "boolean_literal",
-    "named": true,
-    "fields": {}
-  },
-  {
-    "type": "case_expression",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "CASE",
-          "named": true
-        },
-        {
-          "type": "END",
-          "named": true
-        },
-        {
-          "type": "WILDCARD",
-          "named": true
-        },
-        {
-          "type": "boolean_literal",
-          "named": true
-        },
-        {
-          "type": "case_expression",
-          "named": true
-        },
-        {
-          "type": "cast_expression",
-          "named": true
-        },
-        {
-          "type": "column_reference",
-          "named": true
-        },
-        {
-          "type": "else_clause",
-          "named": true
-        },
-        {
-          "type": "function_call",
-          "named": true
-        },
-        {
-          "type": "null_literal",
-          "named": true
-        },
-        {
-          "type": "number_literal",
-          "named": true
-        },
-        {
-          "type": "parenthesized_expression",
-          "named": true
-        },
-        {
-          "type": "string_literal",
-          "named": true
-        },
-        {
-          "type": "when_clause",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "cast_expression",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "AS",
-          "named": true
-        },
-        {
-          "type": "CAST",
-          "named": true
-        },
-        {
-          "type": "WILDCARD",
-          "named": true
-        },
-        {
-          "type": "boolean_literal",
-          "named": true
-        },
-        {
-          "type": "case_expression",
-          "named": true
-        },
-        {
-          "type": "cast_expression",
-          "named": true
-        },
-        {
-          "type": "column_reference",
-          "named": true
-        },
-        {
-          "type": "data_type",
-          "named": true
-        },
-        {
-          "type": "function_call",
-          "named": true
-        },
-        {
-          "type": "null_literal",
-          "named": true
-        },
-        {
-          "type": "number_literal",
-          "named": true
-        },
-        {
-          "type": "parenthesized_expression",
-          "named": true
-        },
-        {
-          "type": "string_literal",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "column_reference",
-    "named": true,
-    "fields": {
-      "column_ref": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "reference",
-            "named": true
-          }
-        ]
-      },
-      "table_ref": {
-        "multiple": false,
-        "required": false,
-        "types": [
-          {
-            "type": "reference",
-            "named": true
-          }
-        ]
-      }
-    }
-  },
-  {
-    "type": "data_type",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "BIGINT",
-          "named": true
-        },
-        {
-          "type": "BOOLEAN",
-          "named": true
-        },
-        {
-          "type": "CHAR",
-          "named": true
-        },
-        {
-          "type": "DATE",
-          "named": true
-        },
-        {
-          "type": "DECIMAL",
-          "named": true
-        },
-        {
-          "type": "DOUBLE_PRECISION",
-          "named": true
-        },
-        {
-          "type": "INTEGER",
-          "named": true
-        },
-        {
-          "type": "INTERVAL",
-          "named": true
-        },
-        {
-          "type": "JSON",
-          "named": true
-        },
-        {
-          "type": "JSONB",
-          "named": true
-        },
-        {
-          "type": "NUMERIC",
-          "named": true
-        },
-        {
-          "type": "REAL",
-          "named": true
-        },
-        {
-          "type": "SMALLINT",
-          "named": true
-        },
-        {
-          "type": "TEXT",
-          "named": true
-        },
-        {
-          "type": "TIME",
-          "named": true
-        },
-        {
-          "type": "TIMESTAMP",
-          "named": true
-        },
-        {
-          "type": "UUID",
-          "named": true
-        },
-        {
-          "type": "VARCHAR",
-          "named": true
-        },
-        {
-          "type": "number_literal",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "else_clause",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "ELSE",
-          "named": true
-        },
-        {
-          "type": "WILDCARD",
-          "named": true
-        },
-        {
-          "type": "boolean_literal",
-          "named": true
-        },
-        {
-          "type": "case_expression",
-          "named": true
-        },
-        {
-          "type": "cast_expression",
-          "named": true
-        },
-        {
-          "type": "column_reference",
-          "named": true
-        },
-        {
-          "type": "function_call",
-          "named": true
-        },
-        {
-          "type": "null_literal",
-          "named": true
-        },
-        {
-          "type": "number_literal",
-          "named": true
-        },
-        {
-          "type": "parenthesized_expression",
-          "named": true
-        },
-        {
-          "type": "string_literal",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "from_clause",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "FROM",
-          "named": true
-        },
-        {
-          "type": "object_reference",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "function_arguments",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "WILDCARD",
-          "named": true
-        },
-        {
-          "type": "boolean_literal",
-          "named": true
-        },
-        {
-          "type": "case_expression",
-          "named": true
-        },
-        {
-          "type": "cast_expression",
-          "named": true
-        },
-        {
-          "type": "column_reference",
-          "named": true
-        },
-        {
-          "type": "function_call",
-          "named": true
-        },
-        {
-          "type": "null_literal",
-          "named": true
-        },
-        {
-          "type": "number_literal",
-          "named": true
-        },
-        {
-          "type": "parenthesized_expression",
-          "named": true
-        },
-        {
-          "type": "string_literal",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "function_call",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": false,
-      "types": [
-        {
-          "type": "function_arguments",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "limit_clause",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "LIMIT",
-          "named": true
-        },
-        {
-          "type": "number_literal",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "null_literal",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "NULL",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "object_reference",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "table_reference",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "offset_clause",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "OFFSET",
-          "named": true
-        },
-        {
-          "type": "number_literal",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "order_by_ascending",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "ASC",
-          "named": true
-        },
-        {
-          "type": "NULLS_FIRST",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "order_by_clause",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "ORDER_BY",
-          "named": true
-        },
-        {
-          "type": "order_by_item",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "order_by_descending",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "DESC",
-          "named": true
-        },
-        {
-          "type": "NULLS_LAST",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "order_by_item",
-    "named": true,
-    "fields": {
-      "expression": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "WILDCARD",
-            "named": true
-          },
-          {
-            "type": "boolean_literal",
-            "named": true
-          },
-          {
-            "type": "case_expression",
-            "named": true
-          },
-          {
-            "type": "cast_expression",
-            "named": true
-          },
-          {
-            "type": "column_reference",
-            "named": true
-          },
-          {
-            "type": "function_call",
-            "named": true
-          },
-          {
-            "type": "null_literal",
-            "named": true
-          },
-          {
-            "type": "number_literal",
-            "named": true
-          },
-          {
-            "type": "parenthesized_expression",
-            "named": true
-          },
-          {
-            "type": "string_literal",
-            "named": true
-          }
-        ]
-      },
-      "order": {
-        "multiple": false,
-        "required": false,
-        "types": [
-          {
-            "type": "order_by_ascending",
-            "named": true
-          },
-          {
-            "type": "order_by_descending",
-            "named": true
-          }
-        ]
-      }
-    }
-  },
-  {
-    "type": "parenthesized_expression",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "WILDCARD",
-          "named": true
-        },
-        {
-          "type": "boolean_literal",
-          "named": true
-        },
-        {
-          "type": "case_expression",
-          "named": true
-        },
-        {
-          "type": "cast_expression",
-          "named": true
-        },
-        {
-          "type": "column_reference",
-          "named": true
-        },
-        {
-          "type": "function_call",
-          "named": true
-        },
-        {
-          "type": "null_literal",
-          "named": true
-        },
-        {
-          "type": "number_literal",
-          "named": true
-        },
-        {
-          "type": "parenthesized_expression",
-          "named": true
-        },
-        {
-          "type": "string_literal",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "reference",
-    "named": true,
-    "fields": {}
-  },
-  {
-    "type": "select_list",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "select_list_item",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "select_list_item",
-    "named": true,
-    "fields": {
-      "alias": {
-        "multiple": false,
-        "required": false,
-        "types": [
-          {
-            "type": "reference",
-            "named": true
-          }
-        ]
-      },
-      "expression": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "WILDCARD",
-            "named": true
-          },
-          {
-            "type": "boolean_literal",
-            "named": true
-          },
-          {
-            "type": "case_expression",
-            "named": true
-          },
-          {
-            "type": "cast_expression",
-            "named": true
-          },
-          {
-            "type": "column_reference",
-            "named": true
-          },
-          {
-            "type": "function_call",
-            "named": true
-          },
-          {
-            "type": "null_literal",
-            "named": true
-          },
-          {
-            "type": "number_literal",
-            "named": true
-          },
-          {
-            "type": "parenthesized_expression",
-            "named": true
-          },
-          {
-            "type": "string_literal",
-            "named": true
-          }
-        ]
-      }
-    },
-    "children": {
-      "multiple": false,
-      "required": false,
-      "types": [
-        {
-          "type": "AS",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "select_statement",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "ALL",
-          "named": true
-        },
-        {
-          "type": "DISTINCT",
-          "named": true
-        },
-        {
-          "type": "SELECT",
-          "named": true
-        },
-        {
-          "type": "from_clause",
-          "named": true
-        },
-        {
-          "type": "limit_clause",
-          "named": true
-        },
-        {
-          "type": "offset_clause",
-          "named": true
-        },
-        {
-          "type": "order_by_clause",
-          "named": true
-        },
-        {
-          "type": "select_list",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "source_file",
-    "named": true,
-    "root": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": false,
-      "types": [
-        {
-          "type": "select_statement",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "string_literal",
-    "named": true,
-    "fields": {}
-  },
-  {
-    "type": "table_reference",
-    "named": true,
-    "fields": {
-      "alias": {
-        "multiple": false,
-        "required": false,
-        "types": [
-          {
-            "type": "reference",
-            "named": true
-          }
-        ]
-      },
-      "database": {
-        "multiple": false,
-        "required": false,
-        "types": [
-          {
-            "type": "reference",
-            "named": true
-          }
-        ]
-      },
-      "name": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "reference",
-            "named": true
-          }
-        ]
-      },
-      "schema": {
-        "multiple": false,
-        "required": false,
-        "types": [
-          {
-            "type": "reference",
-            "named": true
-          }
-        ]
-      }
-    },
-    "children": {
-      "multiple": false,
-      "required": false,
-      "types": [
-        {
-          "type": "AS",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "when_clause",
-    "named": true,
-    "fields": {
-      "then_expression": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "WILDCARD",
-            "named": true
-          },
-          {
-            "type": "boolean_literal",
-            "named": true
-          },
-          {
-            "type": "case_expression",
-            "named": true
-          },
-          {
-            "type": "cast_expression",
-            "named": true
-          },
-          {
-            "type": "column_reference",
-            "named": true
-          },
-          {
-            "type": "function_call",
-            "named": true
-          },
-          {
-            "type": "null_literal",
-            "named": true
-          },
-          {
-            "type": "number_literal",
-            "named": true
-          },
-          {
-            "type": "parenthesized_expression",
-            "named": true
-          },
-          {
-            "type": "string_literal",
-            "named": true
-          }
-        ]
-      },
-      "when_expression": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "WILDCARD",
-            "named": true
-          },
-          {
-            "type": "boolean_literal",
-            "named": true
-          },
-          {
-            "type": "case_expression",
-            "named": true
-          },
-          {
-            "type": "cast_expression",
-            "named": true
-          },
-          {
-            "type": "column_reference",
-            "named": true
-          },
-          {
-            "type": "function_call",
-            "named": true
-          },
-          {
-            "type": "null_literal",
-            "named": true
-          },
-          {
-            "type": "number_literal",
-            "named": true
-          },
-          {
-            "type": "parenthesized_expression",
-            "named": true
-          },
-          {
-            "type": "string_literal",
-            "named": true
-          }
-        ]
-      }
-    },
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "THEN",
-          "named": true
-        },
-        {
-          "type": "WHEN",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "(",
-    "named": false
-  },
-  {
-    "type": ")",
-    "named": false
-  },
-  {
-    "type": ",",
-    "named": false
-  },
-  {
-    "type": ".",
-    "named": false
-  },
-  {
-    "type": ";",
-    "named": false
-  },
-  {
-    "type": "ALL",
-    "named": false
-  },
-  {
-    "type": "AS",
-    "named": false
-  },
-  {
-    "type": "ASC",
-    "named": false
-  },
-  {
-    "type": "BIGINT",
-    "named": false
-  },
-  {
-    "type": "BOOLEAN",
-    "named": false
-  },
-  {
-    "type": "CASE",
-    "named": false
-  },
-  {
-    "type": "CAST",
-    "named": false
-  },
-  {
-    "type": "CHAR",
-    "named": false
-  },
-  {
-    "type": "DATE",
-    "named": false
-  },
-  {
-    "type": "DECIMAL",
-    "named": false
-  },
-  {
-    "type": "DESC",
-    "named": false
-  },
-  {
-    "type": "DISTINCT",
-    "named": false
-  },
-  {
-    "type": "DOUBLE PRECISION",
-    "named": false
-  },
-  {
-    "type": "ELSE",
-    "named": false
-  },
-  {
-    "type": "END",
-    "named": false
-  },
-  {
-    "type": "FROM",
-    "named": false
-  },
-  {
-    "type": "INTEGER",
-    "named": false
-  },
-  {
-    "type": "INTERVAL",
-    "named": false
-  },
-  {
-    "type": "JSON",
-    "named": false
-  },
-  {
-    "type": "JSONB",
-    "named": false
-  },
-  {
-    "type": "LIMIT",
-    "named": false
-  },
-  {
-    "type": "NULL",
-    "named": false
-  },
-  {
-    "type": "NULLS FIRST",
-    "named": false
-  },
-  {
-    "type": "NULLS LAST",
-    "named": false
-  },
-  {
-    "type": "NUMERIC",
-    "named": false
-  },
-  {
-    "type": "OFFSET",
-    "named": false
-  },
-  {
-    "type": "ORDER BY",
-    "named": false
-  },
-  {
-    "type": "REAL",
-    "named": false
-  },
-  {
-    "type": "SELECT",
-    "named": false
-  },
-  {
-    "type": "SMALLINT",
-    "named": false
-  },
-  {
-    "type": "TEXT",
-    "named": false
-  },
-  {
-    "type": "THEN",
-    "named": false
-  },
-  {
-    "type": "TIME",
-    "named": false
-  },
-  {
-    "type": "TIMESTAMP",
-    "named": false
-  },
-  {
-    "type": "UUID",
-    "named": false
-  },
-  {
-    "type": "VARCHAR",
-    "named": false
-  },
-  {
-    "type": "WHEN",
-    "named": false
-  },
-  {
-    "type": "WILDCARD",
-    "named": true
-  },
-  {
-    "type": "all",
-    "named": false
-  },
-  {
-    "type": "as",
-    "named": false
-  },
-  {
-    "type": "asc",
-    "named": false
-  },
-  {
-    "type": "bigint",
-    "named": false
-  },
-  {
-    "type": "boolean",
-    "named": false
-  },
-  {
-    "type": "case",
-    "named": false
-  },
-  {
-    "type": "cast",
-    "named": false
-  },
-  {
-    "type": "char",
-    "named": false
-  },
-  {
-    "type": "date",
-    "named": false
-  },
-  {
-    "type": "decimal",
-    "named": false
-  },
-  {
-    "type": "desc",
-    "named": false
-  },
-  {
-    "type": "distinct",
-    "named": false
-  },
-  {
-    "type": "double precision",
-    "named": false
-  },
-  {
-    "type": "else",
-    "named": false
-  },
-  {
-    "type": "end",
-    "named": false
-  },
-  {
-    "type": "from",
-    "named": false
-  },
-  {
-    "type": "integer",
-    "named": false
-  },
-  {
-    "type": "interval",
-    "named": false
-  },
-  {
-    "type": "json",
-    "named": false
-  },
-  {
-    "type": "jsonb",
-    "named": false
-  },
-  {
-    "type": "limit",
-    "named": false
-  },
-  {
-    "type": "null",
-    "named": false
-  },
-  {
-    "type": "nulls first",
-    "named": false
-  },
-  {
-    "type": "nulls last",
-    "named": false
-  },
-  {
-    "type": "number_literal",
-    "named": true
-  },
-  {
-    "type": "numeric",
-    "named": false
-  },
-  {
-    "type": "offset",
-    "named": false
-  },
-  {
-    "type": "order by",
-    "named": false
-  },
-  {
-    "type": "real",
-    "named": false
-  },
-  {
-    "type": "select",
-    "named": false
-  },
-  {
-    "type": "smallint",
-    "named": false
-  },
-  {
-    "type": "text",
-    "named": false
-  },
-  {
-    "type": "then",
-    "named": false
-  },
-  {
-    "type": "time",
-    "named": false
-  },
-  {
-    "type": "timestamp",
-    "named": false
-  },
-  {
-    "type": "uuid",
-    "named": false
-  },
-  {
-    "type": "varchar",
-    "named": false
-  },
-  {
-    "type": "when",
-    "named": false
-  }
+	{
+		"type": "ALL",
+		"named": true,
+		"fields": {}
+	},
+	{
+		"type": "AS",
+		"named": true,
+		"fields": {}
+	},
+	{
+		"type": "ASC",
+		"named": true,
+		"fields": {}
+	},
+	{
+		"type": "BIGINT",
+		"named": true,
+		"fields": {}
+	},
+	{
+		"type": "BOOLEAN",
+		"named": true,
+		"fields": {}
+	},
+	{
+		"type": "CASE",
+		"named": true,
+		"fields": {}
+	},
+	{
+		"type": "CAST",
+		"named": true,
+		"fields": {}
+	},
+	{
+		"type": "CHAR",
+		"named": true,
+		"fields": {}
+	},
+	{
+		"type": "DATE",
+		"named": true,
+		"fields": {}
+	},
+	{
+		"type": "DECIMAL",
+		"named": true,
+		"fields": {}
+	},
+	{
+		"type": "DESC",
+		"named": true,
+		"fields": {}
+	},
+	{
+		"type": "DISTINCT",
+		"named": true,
+		"fields": {}
+	},
+	{
+		"type": "DOUBLE_PRECISION",
+		"named": true,
+		"fields": {}
+	},
+	{
+		"type": "ELSE",
+		"named": true,
+		"fields": {}
+	},
+	{
+		"type": "END",
+		"named": true,
+		"fields": {}
+	},
+	{
+		"type": "FROM",
+		"named": true,
+		"fields": {}
+	},
+	{
+		"type": "INTEGER",
+		"named": true,
+		"fields": {}
+	},
+	{
+		"type": "INTERVAL",
+		"named": true,
+		"fields": {}
+	},
+	{
+		"type": "JSON",
+		"named": true,
+		"fields": {}
+	},
+	{
+		"type": "JSONB",
+		"named": true,
+		"fields": {}
+	},
+	{
+		"type": "LIMIT",
+		"named": true,
+		"fields": {}
+	},
+	{
+		"type": "NULL",
+		"named": true,
+		"fields": {}
+	},
+	{
+		"type": "NULLS_FIRST",
+		"named": true,
+		"fields": {}
+	},
+	{
+		"type": "NULLS_LAST",
+		"named": true,
+		"fields": {}
+	},
+	{
+		"type": "NUMERIC",
+		"named": true,
+		"fields": {}
+	},
+	{
+		"type": "OFFSET",
+		"named": true,
+		"fields": {}
+	},
+	{
+		"type": "ORDER_BY",
+		"named": true,
+		"fields": {}
+	},
+	{
+		"type": "REAL",
+		"named": true,
+		"fields": {}
+	},
+	{
+		"type": "SELECT",
+		"named": true,
+		"fields": {}
+	},
+	{
+		"type": "SMALLINT",
+		"named": true,
+		"fields": {}
+	},
+	{
+		"type": "TEXT",
+		"named": true,
+		"fields": {}
+	},
+	{
+		"type": "THEN",
+		"named": true,
+		"fields": {}
+	},
+	{
+		"type": "TIME",
+		"named": true,
+		"fields": {}
+	},
+	{
+		"type": "TIMESTAMP",
+		"named": true,
+		"fields": {}
+	},
+	{
+		"type": "UUID",
+		"named": true,
+		"fields": {}
+	},
+	{
+		"type": "VARCHAR",
+		"named": true,
+		"fields": {}
+	},
+	{
+		"type": "WHEN",
+		"named": true,
+		"fields": {}
+	},
+	{
+		"type": "boolean_literal",
+		"named": true,
+		"fields": {}
+	},
+	{
+		"type": "case_expression",
+		"named": true,
+		"fields": {},
+		"children": {
+			"multiple": true,
+			"required": true,
+			"types": [
+				{
+					"type": "CASE",
+					"named": true
+				},
+				{
+					"type": "END",
+					"named": true
+				},
+				{
+					"type": "WILDCARD",
+					"named": true
+				},
+				{
+					"type": "boolean_literal",
+					"named": true
+				},
+				{
+					"type": "case_expression",
+					"named": true
+				},
+				{
+					"type": "cast_expression",
+					"named": true
+				},
+				{
+					"type": "column_reference",
+					"named": true
+				},
+				{
+					"type": "else_clause",
+					"named": true
+				},
+				{
+					"type": "function_call",
+					"named": true
+				},
+				{
+					"type": "null_literal",
+					"named": true
+				},
+				{
+					"type": "number_literal",
+					"named": true
+				},
+				{
+					"type": "parenthesized_expression",
+					"named": true
+				},
+				{
+					"type": "string_literal",
+					"named": true
+				},
+				{
+					"type": "when_clause",
+					"named": true
+				}
+			]
+		}
+	},
+	{
+		"type": "cast_expression",
+		"named": true,
+		"fields": {},
+		"children": {
+			"multiple": true,
+			"required": true,
+			"types": [
+				{
+					"type": "AS",
+					"named": true
+				},
+				{
+					"type": "CAST",
+					"named": true
+				},
+				{
+					"type": "WILDCARD",
+					"named": true
+				},
+				{
+					"type": "boolean_literal",
+					"named": true
+				},
+				{
+					"type": "case_expression",
+					"named": true
+				},
+				{
+					"type": "cast_expression",
+					"named": true
+				},
+				{
+					"type": "column_reference",
+					"named": true
+				},
+				{
+					"type": "data_type",
+					"named": true
+				},
+				{
+					"type": "function_call",
+					"named": true
+				},
+				{
+					"type": "null_literal",
+					"named": true
+				},
+				{
+					"type": "number_literal",
+					"named": true
+				},
+				{
+					"type": "parenthesized_expression",
+					"named": true
+				},
+				{
+					"type": "string_literal",
+					"named": true
+				}
+			]
+		}
+	},
+	{
+		"type": "column_reference",
+		"named": true,
+		"fields": {
+			"column_ref": {
+				"multiple": false,
+				"required": true,
+				"types": [
+					{
+						"type": "reference",
+						"named": true
+					}
+				]
+			},
+			"table_ref": {
+				"multiple": false,
+				"required": false,
+				"types": [
+					{
+						"type": "reference",
+						"named": true
+					}
+				]
+			}
+		}
+	},
+	{
+		"type": "comment",
+		"named": true,
+		"fields": {},
+		"children": {
+			"multiple": true,
+			"required": true,
+			"types": [
+				{
+					"type": "COMMENT",
+					"named": true
+				},
+				{
+					"type": "comment_text",
+					"named": true
+				}
+			]
+		}
+	},
+	{
+		"type": "data_type",
+		"named": true,
+		"fields": {},
+		"children": {
+			"multiple": true,
+			"required": true,
+			"types": [
+				{
+					"type": "BIGINT",
+					"named": true
+				},
+				{
+					"type": "BOOLEAN",
+					"named": true
+				},
+				{
+					"type": "CHAR",
+					"named": true
+				},
+				{
+					"type": "DATE",
+					"named": true
+				},
+				{
+					"type": "DECIMAL",
+					"named": true
+				},
+				{
+					"type": "DOUBLE_PRECISION",
+					"named": true
+				},
+				{
+					"type": "INTEGER",
+					"named": true
+				},
+				{
+					"type": "INTERVAL",
+					"named": true
+				},
+				{
+					"type": "JSON",
+					"named": true
+				},
+				{
+					"type": "JSONB",
+					"named": true
+				},
+				{
+					"type": "NUMERIC",
+					"named": true
+				},
+				{
+					"type": "REAL",
+					"named": true
+				},
+				{
+					"type": "SMALLINT",
+					"named": true
+				},
+				{
+					"type": "TEXT",
+					"named": true
+				},
+				{
+					"type": "TIME",
+					"named": true
+				},
+				{
+					"type": "TIMESTAMP",
+					"named": true
+				},
+				{
+					"type": "UUID",
+					"named": true
+				},
+				{
+					"type": "VARCHAR",
+					"named": true
+				},
+				{
+					"type": "number_literal",
+					"named": true
+				}
+			]
+		}
+	},
+	{
+		"type": "else_clause",
+		"named": true,
+		"fields": {},
+		"children": {
+			"multiple": true,
+			"required": true,
+			"types": [
+				{
+					"type": "ELSE",
+					"named": true
+				},
+				{
+					"type": "WILDCARD",
+					"named": true
+				},
+				{
+					"type": "boolean_literal",
+					"named": true
+				},
+				{
+					"type": "case_expression",
+					"named": true
+				},
+				{
+					"type": "cast_expression",
+					"named": true
+				},
+				{
+					"type": "column_reference",
+					"named": true
+				},
+				{
+					"type": "function_call",
+					"named": true
+				},
+				{
+					"type": "null_literal",
+					"named": true
+				},
+				{
+					"type": "number_literal",
+					"named": true
+				},
+				{
+					"type": "parenthesized_expression",
+					"named": true
+				},
+				{
+					"type": "string_literal",
+					"named": true
+				}
+			]
+		}
+	},
+	{
+		"type": "from_clause",
+		"named": true,
+		"fields": {},
+		"children": {
+			"multiple": true,
+			"required": true,
+			"types": [
+				{
+					"type": "FROM",
+					"named": true
+				},
+				{
+					"type": "object_reference",
+					"named": true
+				}
+			]
+		}
+	},
+	{
+		"type": "function_arguments",
+		"named": true,
+		"fields": {},
+		"children": {
+			"multiple": true,
+			"required": true,
+			"types": [
+				{
+					"type": "WILDCARD",
+					"named": true
+				},
+				{
+					"type": "boolean_literal",
+					"named": true
+				},
+				{
+					"type": "case_expression",
+					"named": true
+				},
+				{
+					"type": "cast_expression",
+					"named": true
+				},
+				{
+					"type": "column_reference",
+					"named": true
+				},
+				{
+					"type": "function_call",
+					"named": true
+				},
+				{
+					"type": "null_literal",
+					"named": true
+				},
+				{
+					"type": "number_literal",
+					"named": true
+				},
+				{
+					"type": "parenthesized_expression",
+					"named": true
+				},
+				{
+					"type": "string_literal",
+					"named": true
+				}
+			]
+		}
+	},
+	{
+		"type": "function_call",
+		"named": true,
+		"fields": {},
+		"children": {
+			"multiple": false,
+			"required": false,
+			"types": [
+				{
+					"type": "function_arguments",
+					"named": true
+				}
+			]
+		}
+	},
+	{
+		"type": "limit_clause",
+		"named": true,
+		"fields": {},
+		"children": {
+			"multiple": true,
+			"required": true,
+			"types": [
+				{
+					"type": "LIMIT",
+					"named": true
+				},
+				{
+					"type": "number_literal",
+					"named": true
+				}
+			]
+		}
+	},
+	{
+		"type": "null_literal",
+		"named": true,
+		"fields": {},
+		"children": {
+			"multiple": false,
+			"required": true,
+			"types": [
+				{
+					"type": "NULL",
+					"named": true
+				}
+			]
+		}
+	},
+	{
+		"type": "object_reference",
+		"named": true,
+		"fields": {},
+		"children": {
+			"multiple": false,
+			"required": true,
+			"types": [
+				{
+					"type": "table_reference",
+					"named": true
+				}
+			]
+		}
+	},
+	{
+		"type": "offset_clause",
+		"named": true,
+		"fields": {},
+		"children": {
+			"multiple": true,
+			"required": true,
+			"types": [
+				{
+					"type": "OFFSET",
+					"named": true
+				},
+				{
+					"type": "number_literal",
+					"named": true
+				}
+			]
+		}
+	},
+	{
+		"type": "order_by_ascending",
+		"named": true,
+		"fields": {},
+		"children": {
+			"multiple": false,
+			"required": true,
+			"types": [
+				{
+					"type": "ASC",
+					"named": true
+				},
+				{
+					"type": "NULLS_FIRST",
+					"named": true
+				}
+			]
+		}
+	},
+	{
+		"type": "order_by_clause",
+		"named": true,
+		"fields": {},
+		"children": {
+			"multiple": true,
+			"required": true,
+			"types": [
+				{
+					"type": "ORDER_BY",
+					"named": true
+				},
+				{
+					"type": "order_by_item",
+					"named": true
+				}
+			]
+		}
+	},
+	{
+		"type": "order_by_descending",
+		"named": true,
+		"fields": {},
+		"children": {
+			"multiple": false,
+			"required": true,
+			"types": [
+				{
+					"type": "DESC",
+					"named": true
+				},
+				{
+					"type": "NULLS_LAST",
+					"named": true
+				}
+			]
+		}
+	},
+	{
+		"type": "order_by_item",
+		"named": true,
+		"fields": {
+			"expression": {
+				"multiple": false,
+				"required": true,
+				"types": [
+					{
+						"type": "WILDCARD",
+						"named": true
+					},
+					{
+						"type": "boolean_literal",
+						"named": true
+					},
+					{
+						"type": "case_expression",
+						"named": true
+					},
+					{
+						"type": "cast_expression",
+						"named": true
+					},
+					{
+						"type": "column_reference",
+						"named": true
+					},
+					{
+						"type": "function_call",
+						"named": true
+					},
+					{
+						"type": "null_literal",
+						"named": true
+					},
+					{
+						"type": "number_literal",
+						"named": true
+					},
+					{
+						"type": "parenthesized_expression",
+						"named": true
+					},
+					{
+						"type": "string_literal",
+						"named": true
+					}
+				]
+			},
+			"order": {
+				"multiple": false,
+				"required": false,
+				"types": [
+					{
+						"type": "order_by_ascending",
+						"named": true
+					},
+					{
+						"type": "order_by_descending",
+						"named": true
+					}
+				]
+			}
+		}
+	},
+	{
+		"type": "parenthesized_expression",
+		"named": true,
+		"fields": {},
+		"children": {
+			"multiple": false,
+			"required": true,
+			"types": [
+				{
+					"type": "WILDCARD",
+					"named": true
+				},
+				{
+					"type": "boolean_literal",
+					"named": true
+				},
+				{
+					"type": "case_expression",
+					"named": true
+				},
+				{
+					"type": "cast_expression",
+					"named": true
+				},
+				{
+					"type": "column_reference",
+					"named": true
+				},
+				{
+					"type": "function_call",
+					"named": true
+				},
+				{
+					"type": "null_literal",
+					"named": true
+				},
+				{
+					"type": "number_literal",
+					"named": true
+				},
+				{
+					"type": "parenthesized_expression",
+					"named": true
+				},
+				{
+					"type": "string_literal",
+					"named": true
+				}
+			]
+		}
+	},
+	{
+		"type": "reference",
+		"named": true,
+		"fields": {}
+	},
+	{
+		"type": "select_list",
+		"named": true,
+		"fields": {},
+		"children": {
+			"multiple": true,
+			"required": true,
+			"types": [
+				{
+					"type": "select_list_item",
+					"named": true
+				}
+			]
+		}
+	},
+	{
+		"type": "select_list_item",
+		"named": true,
+		"fields": {
+			"alias": {
+				"multiple": false,
+				"required": false,
+				"types": [
+					{
+						"type": "reference",
+						"named": true
+					}
+				]
+			},
+			"comment": {
+				"multiple": false,
+				"required": false,
+				"types": [
+					{
+						"type": "comment",
+						"named": true
+					}
+				]
+			},
+			"expression": {
+				"multiple": false,
+				"required": true,
+				"types": [
+					{
+						"type": "WILDCARD",
+						"named": true
+					},
+					{
+						"type": "boolean_literal",
+						"named": true
+					},
+					{
+						"type": "case_expression",
+						"named": true
+					},
+					{
+						"type": "cast_expression",
+						"named": true
+					},
+					{
+						"type": "column_reference",
+						"named": true
+					},
+					{
+						"type": "function_call",
+						"named": true
+					},
+					{
+						"type": "null_literal",
+						"named": true
+					},
+					{
+						"type": "number_literal",
+						"named": true
+					},
+					{
+						"type": "parenthesized_expression",
+						"named": true
+					},
+					{
+						"type": "string_literal",
+						"named": true
+					}
+				]
+			}
+		},
+		"children": {
+			"multiple": false,
+			"required": false,
+			"types": [
+				{
+					"type": "AS",
+					"named": true
+				}
+			]
+		}
+	},
+	{
+		"type": "select_statement",
+		"named": true,
+		"fields": {},
+		"children": {
+			"multiple": true,
+			"required": true,
+			"types": [
+				{
+					"type": "ALL",
+					"named": true
+				},
+				{
+					"type": "DISTINCT",
+					"named": true
+				},
+				{
+					"type": "SELECT",
+					"named": true
+				},
+				{
+					"type": "from_clause",
+					"named": true
+				},
+				{
+					"type": "limit_clause",
+					"named": true
+				},
+				{
+					"type": "offset_clause",
+					"named": true
+				},
+				{
+					"type": "order_by_clause",
+					"named": true
+				},
+				{
+					"type": "select_list",
+					"named": true
+				}
+			]
+		}
+	},
+	{
+		"type": "source_file",
+		"named": true,
+		"root": true,
+		"fields": {},
+		"children": {
+			"multiple": true,
+			"required": false,
+			"types": [
+				{
+					"type": "comment",
+					"named": true
+				},
+				{
+					"type": "select_statement",
+					"named": true
+				}
+			]
+		}
+	},
+	{
+		"type": "string_literal",
+		"named": true,
+		"fields": {}
+	},
+	{
+		"type": "table_reference",
+		"named": true,
+		"fields": {
+			"alias": {
+				"multiple": false,
+				"required": false,
+				"types": [
+					{
+						"type": "reference",
+						"named": true
+					}
+				]
+			},
+			"database": {
+				"multiple": false,
+				"required": false,
+				"types": [
+					{
+						"type": "reference",
+						"named": true
+					}
+				]
+			},
+			"name": {
+				"multiple": false,
+				"required": true,
+				"types": [
+					{
+						"type": "reference",
+						"named": true
+					}
+				]
+			},
+			"schema": {
+				"multiple": false,
+				"required": false,
+				"types": [
+					{
+						"type": "reference",
+						"named": true
+					}
+				]
+			}
+		},
+		"children": {
+			"multiple": false,
+			"required": false,
+			"types": [
+				{
+					"type": "AS",
+					"named": true
+				}
+			]
+		}
+	},
+	{
+		"type": "when_clause",
+		"named": true,
+		"fields": {
+			"then_expression": {
+				"multiple": false,
+				"required": true,
+				"types": [
+					{
+						"type": "WILDCARD",
+						"named": true
+					},
+					{
+						"type": "boolean_literal",
+						"named": true
+					},
+					{
+						"type": "case_expression",
+						"named": true
+					},
+					{
+						"type": "cast_expression",
+						"named": true
+					},
+					{
+						"type": "column_reference",
+						"named": true
+					},
+					{
+						"type": "function_call",
+						"named": true
+					},
+					{
+						"type": "null_literal",
+						"named": true
+					},
+					{
+						"type": "number_literal",
+						"named": true
+					},
+					{
+						"type": "parenthesized_expression",
+						"named": true
+					},
+					{
+						"type": "string_literal",
+						"named": true
+					}
+				]
+			},
+			"when_expression": {
+				"multiple": false,
+				"required": true,
+				"types": [
+					{
+						"type": "WILDCARD",
+						"named": true
+					},
+					{
+						"type": "boolean_literal",
+						"named": true
+					},
+					{
+						"type": "case_expression",
+						"named": true
+					},
+					{
+						"type": "cast_expression",
+						"named": true
+					},
+					{
+						"type": "column_reference",
+						"named": true
+					},
+					{
+						"type": "function_call",
+						"named": true
+					},
+					{
+						"type": "null_literal",
+						"named": true
+					},
+					{
+						"type": "number_literal",
+						"named": true
+					},
+					{
+						"type": "parenthesized_expression",
+						"named": true
+					},
+					{
+						"type": "string_literal",
+						"named": true
+					}
+				]
+			}
+		},
+		"children": {
+			"multiple": true,
+			"required": true,
+			"types": [
+				{
+					"type": "THEN",
+					"named": true
+				},
+				{
+					"type": "WHEN",
+					"named": true
+				}
+			]
+		}
+	},
+	{
+		"type": "(",
+		"named": false
+	},
+	{
+		"type": ")",
+		"named": false
+	},
+	{
+		"type": ",",
+		"named": false
+	},
+	{
+		"type": ".",
+		"named": false
+	},
+	{
+		"type": ";",
+		"named": false
+	},
+	{
+		"type": "ALL",
+		"named": false
+	},
+	{
+		"type": "AS",
+		"named": false
+	},
+	{
+		"type": "ASC",
+		"named": false
+	},
+	{
+		"type": "BIGINT",
+		"named": false
+	},
+	{
+		"type": "BOOLEAN",
+		"named": false
+	},
+	{
+		"type": "CASE",
+		"named": false
+	},
+	{
+		"type": "CAST",
+		"named": false
+	},
+	{
+		"type": "CHAR",
+		"named": false
+	},
+	{
+		"type": "COMMENT",
+		"named": true
+	},
+	{
+		"type": "DATE",
+		"named": false
+	},
+	{
+		"type": "DECIMAL",
+		"named": false
+	},
+	{
+		"type": "DESC",
+		"named": false
+	},
+	{
+		"type": "DISTINCT",
+		"named": false
+	},
+	{
+		"type": "DOUBLE PRECISION",
+		"named": false
+	},
+	{
+		"type": "ELSE",
+		"named": false
+	},
+	{
+		"type": "END",
+		"named": false
+	},
+	{
+		"type": "FROM",
+		"named": false
+	},
+	{
+		"type": "INTEGER",
+		"named": false
+	},
+	{
+		"type": "INTERVAL",
+		"named": false
+	},
+	{
+		"type": "JSON",
+		"named": false
+	},
+	{
+		"type": "JSONB",
+		"named": false
+	},
+	{
+		"type": "LIMIT",
+		"named": false
+	},
+	{
+		"type": "NULL",
+		"named": false
+	},
+	{
+		"type": "NULLS FIRST",
+		"named": false
+	},
+	{
+		"type": "NULLS LAST",
+		"named": false
+	},
+	{
+		"type": "NUMERIC",
+		"named": false
+	},
+	{
+		"type": "OFFSET",
+		"named": false
+	},
+	{
+		"type": "ORDER BY",
+		"named": false
+	},
+	{
+		"type": "REAL",
+		"named": false
+	},
+	{
+		"type": "SELECT",
+		"named": false
+	},
+	{
+		"type": "SMALLINT",
+		"named": false
+	},
+	{
+		"type": "TEXT",
+		"named": false
+	},
+	{
+		"type": "THEN",
+		"named": false
+	},
+	{
+		"type": "TIME",
+		"named": false
+	},
+	{
+		"type": "TIMESTAMP",
+		"named": false
+	},
+	{
+		"type": "UUID",
+		"named": false
+	},
+	{
+		"type": "VARCHAR",
+		"named": false
+	},
+	{
+		"type": "WHEN",
+		"named": false
+	},
+	{
+		"type": "WILDCARD",
+		"named": true
+	},
+	{
+		"type": "all",
+		"named": false
+	},
+	{
+		"type": "as",
+		"named": false
+	},
+	{
+		"type": "asc",
+		"named": false
+	},
+	{
+		"type": "bigint",
+		"named": false
+	},
+	{
+		"type": "boolean",
+		"named": false
+	},
+	{
+		"type": "case",
+		"named": false
+	},
+	{
+		"type": "cast",
+		"named": false
+	},
+	{
+		"type": "char",
+		"named": false
+	},
+	{
+		"type": "comment_text",
+		"named": true
+	},
+	{
+		"type": "date",
+		"named": false
+	},
+	{
+		"type": "decimal",
+		"named": false
+	},
+	{
+		"type": "desc",
+		"named": false
+	},
+	{
+		"type": "distinct",
+		"named": false
+	},
+	{
+		"type": "double precision",
+		"named": false
+	},
+	{
+		"type": "else",
+		"named": false
+	},
+	{
+		"type": "end",
+		"named": false
+	},
+	{
+		"type": "from",
+		"named": false
+	},
+	{
+		"type": "integer",
+		"named": false
+	},
+	{
+		"type": "interval",
+		"named": false
+	},
+	{
+		"type": "json",
+		"named": false
+	},
+	{
+		"type": "jsonb",
+		"named": false
+	},
+	{
+		"type": "limit",
+		"named": false
+	},
+	{
+		"type": "null",
+		"named": false
+	},
+	{
+		"type": "nulls first",
+		"named": false
+	},
+	{
+		"type": "nulls last",
+		"named": false
+	},
+	{
+		"type": "number_literal",
+		"named": true
+	},
+	{
+		"type": "numeric",
+		"named": false
+	},
+	{
+		"type": "offset",
+		"named": false
+	},
+	{
+		"type": "order by",
+		"named": false
+	},
+	{
+		"type": "real",
+		"named": false
+	},
+	{
+		"type": "select",
+		"named": false
+	},
+	{
+		"type": "smallint",
+		"named": false
+	},
+	{
+		"type": "text",
+		"named": false
+	},
+	{
+		"type": "then",
+		"named": false
+	},
+	{
+		"type": "time",
+		"named": false
+	},
+	{
+		"type": "timestamp",
+		"named": false
+	},
+	{
+		"type": "uuid",
+		"named": false
+	},
+	{
+		"type": "varchar",
+		"named": false
+	},
+	{
+		"type": "when",
+		"named": false
+	}
 ]

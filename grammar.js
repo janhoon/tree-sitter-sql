@@ -10,214 +10,197 @@
 const { keywords } = require("./keywords");
 
 module.exports = grammar({
-  name: "sql",
+	name: "sql",
 
-  rules: {
-    source_file: ($) => repeat($._statement),
+	rules: {
+		source_file: ($) => repeat($._statement),
 
-    _statement: ($) => seq(
-      choice(
-        $.select_statement,
-      ),
-      optional(';')
-    ),
+		_statement: ($) =>
+			seq(choice($.select_statement, $.comment), optional(";")),
 
-    ...keywords,
+		...keywords,
 
-    // Basic elements
-    _list_separator: () => ",",
-    _quoted_reference: () => /"[^"]*"/,
-    _single_quoted_reference: () => /'[^']*'/,
-    _reference: () => /[a-zA-Z][a-zA-Z0-9_]*/,
-    _literal: ($) => choice(
-      $.number_literal,
-      $.string_literal,
-      $.boolean_literal,
-      $.null_literal
-    ),
+		// Basic elements
+		_list_separator: () => ",",
+		_quoted_reference: () => /"[^"]*"/,
+		_single_quoted_reference: () => /'[^']*'/,
+		_reference: () => /[a-zA-Z][a-zA-Z0-9_]*/,
+		_literal: ($) =>
+			choice(
+				$.number_literal,
+				$.string_literal,
+				$.boolean_literal,
+				$.null_literal,
+			),
 
-    reference: ($) => choice($._quoted_reference, $._reference),
+		comment_text: ($) => /[^\n]*/,
+		comment: ($) => seq($.COMMENT, optional($.comment_text)),
 
-    number_literal: () => /[0-9]+(\.[0-9]+)?([eE][+-]?[0-9]+)?/,
-    string_literal: ($) => $._single_quoted_reference,
-    boolean_literal: () => choice(/true/i, /false/i),
-    null_literal: ($) => $.NULL,
+		reference: ($) => choice($._quoted_reference, $._reference),
 
-    _alias: ($) => seq(optional($.AS), field("alias", $.reference)),
+		number_literal: () => /[0-9]+(\.[0-9]+)?([eE][+-]?[0-9]+)?/,
+		string_literal: ($) => $._single_quoted_reference,
+		boolean_literal: () => choice(/true/i, /false/i),
+		null_literal: ($) => $.NULL,
 
-    // Expressions
-    _expression: ($) => choice(
-      $.WILDCARD,
-      $.column_reference,
-      $._literal,
-      $.function_call,
-      $.parenthesized_expression,
-      $.case_expression,
-      $.cast_expression
-    ),
+		_alias: ($) => seq(optional($.AS), field("alias", $.reference)),
 
-    column_reference: ($) => seq(
-      optional(seq(field("table_ref", $.reference), '.')),
-      field("column_ref", $.reference)
-    ),
+		// Expressions
+		_expression: ($) =>
+			choice(
+				$.WILDCARD,
+				$.column_reference,
+				$._literal,
+				$.function_call,
+				$.parenthesized_expression,
+				$.case_expression,
+				$.cast_expression,
+			),
 
-    function_call: ($) => seq(
-       $._reference,
-      '(',
-      optional($.function_arguments),
-      ')'
-    ),
+		column_reference: ($) =>
+			seq(
+				optional(seq(field("table_ref", $.reference), ".")),
+				field("column_ref", $.reference),
+			),
 
-    function_arguments: ($) => seq(
-      $._expression,
-      repeat(seq($._list_separator, $._expression))
-    ),
+		function_call: ($) =>
+			seq($._reference, "(", optional($.function_arguments), ")"),
 
-    parenthesized_expression: ($) => seq(
-      '(',
-      $._expression,
-      ')'
-    ),
+		function_arguments: ($) =>
+			seq($._expression, repeat(seq($._list_separator, $._expression))),
 
-    case_expression: ($) => seq(
-      $.CASE,
-      optional($._expression),
-      repeat1($.when_clause),
-      optional($.else_clause),
-      $.END
-    ),
+		parenthesized_expression: ($) => seq("(", $._expression, ")"),
 
-    when_clause: ($) => seq(
-      $.WHEN,
-      field("when_expression", $._expression),
-      $.THEN,
-      field("then_expression", $._expression)
-    ),
+		case_expression: ($) =>
+			seq(
+				$.CASE,
+				optional($._expression),
+				repeat1($.when_clause),
+				optional($.else_clause),
+				$.END,
+			),
 
-    else_clause: ($) => seq(
-      $.ELSE,
-      $._expression
-    ),
+		when_clause: ($) =>
+			seq(
+				$.WHEN,
+				field("when_expression", $._expression),
+				$.THEN,
+				field("then_expression", $._expression),
+			),
 
-    cast_expression: ($) => seq(
-      $.CAST,
-      '(',
-      $._expression,
-      $.AS,
-      $.data_type,
-      ')'
-    ),
+		else_clause: ($) => seq($.ELSE, $._expression),
 
-    data_type: ($) => choice(
-      $.INTEGER,
-      $.BIGINT,
-      $.SMALLINT,
-      $.NUMERIC,
-      $.DECIMAL,
-      $.REAL,
-      $.DOUBLE_PRECISION,
-      seq($.VARCHAR, optional(seq('(', $.number_literal, ')'))),
-      seq($.CHAR, optional(seq('(', $.number_literal, ')'))),
-      $.TEXT,
-      $.BOOLEAN,
-      $.DATE,
-      $.TIME,
-      $.TIMESTAMP,
-      $.INTERVAL,
-      $.JSON,
-      $.JSONB,
-      $.UUID
-    ),
+		cast_expression: ($) =>
+			seq($.CAST, "(", $._expression, $.AS, $.data_type, ")"),
 
-    // SELECT statement
-    select_statement: ($) => seq(
-      $.SELECT,
-      optional(choice($.DISTINCT, $.ALL)),
-      $.select_list,
-      optional($.from_clause),
-      optional($.order_by_clause),
-      optional($.limit_clause),
-      optional($.offset_clause)
-    ),
+		data_type: ($) =>
+			choice(
+				$.INTEGER,
+				$.BIGINT,
+				$.SMALLINT,
+				$.NUMERIC,
+				$.DECIMAL,
+				$.REAL,
+				$.DOUBLE_PRECISION,
+				seq($.VARCHAR, optional(seq("(", $.number_literal, ")"))),
+				seq($.CHAR, optional(seq("(", $.number_literal, ")"))),
+				$.TEXT,
+				$.BOOLEAN,
+				$.DATE,
+				$.TIME,
+				$.TIMESTAMP,
+				$.INTERVAL,
+				$.JSON,
+				$.JSONB,
+				$.UUID,
+			),
 
-    select_list: ($) => seq(
-      seq(
-        $.select_list_item,
-        repeat(seq($._list_separator, $.select_list_item))
-      )
-    ),
+		// SELECT statement
+		select_statement: ($) =>
+			seq(
+				$.SELECT,
+				optional(choice($.DISTINCT, $.ALL)),
+				$.select_list,
+				optional($.from_clause),
+				optional($.order_by_clause),
+				optional($.limit_clause),
+				optional($.offset_clause),
+			),
 
-    select_list_item: ($) => seq(
-      field("expression", $._expression),
-      optional($._alias)
-    ),
+		select_list: ($) =>
+			seq(
+				$.select_list_item,
+				repeat(seq($._list_separator, $.select_list_item)),
+			),
 
-    from_clause: ($) => seq(
-      $.FROM,
-      $.object_reference,
-      repeat(seq($._list_separator, $.object_reference))
-    ),
+		select_list_item: ($) =>
+			seq(
+				field("expression", $._expression),
+				optional($._alias),
+				optional(field("inline_comment", $.comment)),
+			),
 
-    object_reference: ($) => choice(
-      $.table_reference,
-    ),
+		from_clause: ($) =>
+			seq(
+				$.FROM,
+				$.object_reference,
+				repeat(seq($._list_separator, $.object_reference)),
+			),
 
-    _database_schema_table_reference: ($) => seq(
-      field("database", $.reference),
-      '.',
-      field("schema", $.reference),
-      '.',
-      field("name", $.reference),
-      optional($._alias)
-    ),
+		object_reference: ($) => choice($.table_reference),
 
-    _schema_table_reference: ($) => seq(
-      field("schema", $.reference),
-      '.',
-      field("name", $.reference),
-      optional($._alias)
-    ),
+		_database_schema_table_reference: ($) =>
+			seq(
+				field("database", $.reference),
+				".",
+				field("schema", $.reference),
+				".",
+				field("name", $.reference),
+				optional($._alias),
+			),
 
-    _direct_table_reference: ($) => seq(
-      field("name", $.reference),
-      optional($._alias)
-    ),
+		_schema_table_reference: ($) =>
+			seq(
+				field("schema", $.reference),
+				".",
+				field("name", $.reference),
+				optional($._alias),
+			),
 
-    table_reference: ($) => choice(
-      prec(1, $._database_schema_table_reference),
-      prec(2, $._schema_table_reference),
-      $._direct_table_reference
-    ),
+		_direct_table_reference: ($) =>
+			seq(field("name", $.reference), optional($._alias)),
 
-    where_clause: ($) => seq(
-      $.WHERE,
-      $._expression
-    ),
+		table_reference: ($) =>
+			choice(
+				prec(1, $._database_schema_table_reference),
+				prec(2, $._schema_table_reference),
+				$._direct_table_reference,
+			),
 
-    order_by_clause: ($) => seq(
-      $.ORDER_BY,
-      $.order_by_item,
-      repeat(seq($._list_separator, $.order_by_item))
-    ),
+		where_clause: ($) => seq($.WHERE, $._expression),
 
-    order_by_item: ($) => seq(
-      field("expression", $._expression),
-      optional(field("order", choice($.order_by_ascending, $.order_by_descending)))
-    ),
+		order_by_clause: ($) =>
+			seq(
+				$.ORDER_BY,
+				$.order_by_item,
+				repeat(seq($._list_separator, $.order_by_item)),
+			),
 
-    order_by_ascending: ($) => choice($.ASC, $.NULLS_FIRST),
-    order_by_descending: ($) => choice($.DESC, $.NULLS_LAST),
+		order_by_item: ($) =>
+			seq(
+				field("expression", $._expression),
+				optional(
+					field("order", choice($.order_by_ascending, $.order_by_descending)),
+				),
+			),
 
-    limit_clause: ($) => seq(
-      $.LIMIT,
-      choice($.number_literal, $._reference, /all/i)
-    ),
+		order_by_ascending: ($) => choice($.ASC, $.NULLS_FIRST),
+		order_by_descending: ($) => choice($.DESC, $.NULLS_LAST),
 
-    offset_clause: ($) => seq(
-      $.OFFSET,
-      $.number_literal,
-      optional(choice(/row/i, /rows/i))
-    ),
-  },
+		limit_clause: ($) =>
+			seq($.LIMIT, choice($.number_literal, $._reference, /all/i)),
+
+		offset_clause: ($) =>
+			seq($.OFFSET, $.number_literal, optional(choice(/row/i, /rows/i))),
+	},
 });
-

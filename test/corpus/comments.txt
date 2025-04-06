@@ -1,0 +1,49 @@
+===
+Comment before query
+===
+
+-- comment
+SELECT * FROM table;
+
+---
+
+(source_file
+  (comment
+    (COMMENT)
+    (comment_text))
+  (select_statement
+    (SELECT)
+    (select_list
+      (select_list_item
+        expression: (WILDCARD)))
+    (from_clause
+      (FROM)
+      (object_reference
+        (table_reference
+          name: (reference))))))
+
+===
+Comment next to select expression
+===
+
+SELECT
+ col1, -- col1 description
+FROM table;
+
+---
+
+(source_file
+  (select_statement
+    (SELECT)
+    (select_list
+      (select_list_item
+        expression: (column_reference
+          column_ref: (reference))
+        comment: (comment
+          (COMMENT)
+          (comment_text)))
+  (from_clause
+    (FROM)
+    (object_reference
+      (table_reference
+        name: (reference)))))

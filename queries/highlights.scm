@@ -114,3 +114,7 @@
     ; (WINDOW)
     ; (WITH)
 ] @keyword
+
+[
+  (number_literal)
+] @number
