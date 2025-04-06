@@ -13,9 +13,7 @@ module.exports = grammar({
   name: "sql",
 
   rules: {
-
     source_file: ($) => repeat($._statement),
-
 
     _statement: ($) => seq(
       choice(
@@ -31,13 +29,14 @@ module.exports = grammar({
     _quoted_reference: () => /"[^"]*"/,
     _single_quoted_reference: () => /'[^']*'/,
     _reference: () => /[a-zA-Z][a-zA-Z0-9_]*/,
-    reference: ($) => choice($._quoted_reference, $._reference),
     _literal: ($) => choice(
       $.number_literal,
       $.string_literal,
       $.boolean_literal,
       $.null_literal
     ),
+
+    reference: ($) => choice($._quoted_reference, $._reference),
 
     number_literal: () => /[0-9]+(\.[0-9]+)?([eE][+-]?[0-9]+)?/,
     string_literal: ($) => $._single_quoted_reference,
