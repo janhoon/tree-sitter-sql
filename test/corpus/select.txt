@@ -8,6 +8,7 @@ SELECT co1, "co1", 'col1', 1, test();
 
 (source_file
   (select_statement
+    (SELECT)
     (select_list
       (select_list_item
         expression: (column_reference
@@ -32,15 +33,21 @@ SELECT case when 1 then 2 else 3 end;
 
 (source_file
   (select_statement
+    (SELECT)
     (select_list
       (select_list_item
         expression:
           (case_expression
+            (CASE)
             (when_clause
+                (WHEN)
                 when_expression: (number_literal)
+                (THEN)
                 then_expression: (number_literal))
             (else_clause
-                (number_literal)))))))
+                (ELSE)
+                (number_literal))
+            (END))))))
 
 ===
 Simple SELECT query with alias
@@ -52,10 +59,12 @@ SELECT co1 AS "col1", col2 "col2";
 
 (source_file
   (select_statement
+    (SELECT)
     (select_list
       (select_list_item
         expression: (column_reference
           column_ref: (reference))
+        (AS)
         alias: (reference))
       (select_list_item
         expression: (column_reference

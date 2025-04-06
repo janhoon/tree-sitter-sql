@@ -5,9 +5,13 @@
       "camelcase": "SQL",
       "scope": "source.sql",
       "file-types": [
-        ".sql"
+        "sql"
       ],
-      "injection-regex": "^sql$"
+      "path": ".",
+      "injection-regex": "^sql$",
+      "highlights": [
+        "queries/highlights.scm"
+      ]
     }
   ],
   "metadata": {

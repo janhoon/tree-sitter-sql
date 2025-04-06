@@ -1,1 +1,1 @@
-SELECT * from db.schema.table1 AS t;
+select * from db.schema.table1 AS t;

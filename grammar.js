@@ -13,7 +13,9 @@ module.exports = grammar({
   name: "sql",
 
   rules: {
+
     source_file: ($) => repeat($._statement),
+
 
     _statement: ($) => seq(
       choice(
@@ -21,6 +23,8 @@ module.exports = grammar({
       ),
       optional(';')
     ),
+
+    ...keywords,
 
     // Basic elements
     _list_separator: () => ",",
@@ -38,13 +42,13 @@ module.exports = grammar({
     number_literal: () => /[0-9]+(\.[0-9]+)?([eE][+-]?[0-9]+)?/,
     string_literal: ($) => $._single_quoted_reference,
     boolean_literal: () => choice(/true/i, /false/i),
-    null_literal: () => keywords.NULL,
+    null_literal: ($) => $.NULL,
 
-    _alias: ($) => seq(optional(keywords.AS), $.reference),
+    _alias: ($) => seq(optional($.AS), field("alias", $.reference)),
 
     // Expressions
     _expression: ($) => choice(
-      $.wildcard,
+      $.WILDCARD,
       $.column_reference,
       $._literal,
       $.function_call,
@@ -52,8 +56,6 @@ module.exports = grammar({
       $.case_expression,
       $.cast_expression
     ),
-
-    wildcard: () => keywords.WILDCARD,
 
     column_reference: ($) => seq(
       optional(seq(field("table_ref", $.reference), '.')),
@@ -79,59 +81,59 @@ module.exports = grammar({
     ),
 
     case_expression: ($) => seq(
-      keywords.CASE,
+      $.CASE,
       optional($._expression),
       repeat1($.when_clause),
       optional($.else_clause),
-      keywords.END
+      $.END
     ),
 
     when_clause: ($) => seq(
-      keywords.WHEN,
+      $.WHEN,
       field("when_expression", $._expression),
-      keywords.THEN,
+      $.THEN,
       field("then_expression", $._expression)
     ),
 
     else_clause: ($) => seq(
-      keywords.ELSE,
+      $.ELSE,
       $._expression
     ),
 
     cast_expression: ($) => seq(
-      keywords.CAST,
+      $.CAST,
       '(',
       $._expression,
-      keywords.AS,
+      $.AS,
       $.data_type,
       ')'
     ),
 
     data_type: ($) => choice(
-      keywords.INTEGER,
-      keywords.BIGINT,
-      keywords.SMALLINT,
-      keywords.NUMERIC,
-      keywords.DECIMAL,
-      keywords.REAL,
-      keywords.DOUBLE_PRECISION,
-      seq(keywords.VARCHAR, optional(seq('(', $.number_literal, ')'))),
-      seq(keywords.CHAR, optional(seq('(', $.number_literal, ')'))),
-      keywords.TEXT,
-      keywords.BOOLEAN,
-      keywords.DATE,
-      keywords.TIME,
-      keywords.TIMESTAMP,
-      keywords.INTERVAL,
-      keywords.JSON,
-      keywords.JSONB,
-      keywords.UUID
+      $.INTEGER,
+      $.BIGINT,
+      $.SMALLINT,
+      $.NUMERIC,
+      $.DECIMAL,
+      $.REAL,
+      $.DOUBLE_PRECISION,
+      seq($.VARCHAR, optional(seq('(', $.number_literal, ')'))),
+      seq($.CHAR, optional(seq('(', $.number_literal, ')'))),
+      $.TEXT,
+      $.BOOLEAN,
+      $.DATE,
+      $.TIME,
+      $.TIMESTAMP,
+      $.INTERVAL,
+      $.JSON,
+      $.JSONB,
+      $.UUID
     ),
 
     // SELECT statement
     select_statement: ($) => seq(
-      keywords.SELECT,
-      optional(choice(keywords.DISTINCT, keywords.ALL)),
+      $.SELECT,
+      optional(choice($.DISTINCT, $.ALL)),
       $.select_list,
       optional($.from_clause),
       optional($.order_by_clause),
@@ -148,11 +150,11 @@ module.exports = grammar({
 
     select_list_item: ($) => seq(
       field("expression", $._expression),
-      optional(field("alias", $._alias))
+      optional($._alias)
     ),
 
     from_clause: ($) => seq(
-      keywords.FROM,
+      $.FROM,
       $.object_reference,
       repeat(seq($._list_separator, $.object_reference))
     ),
@@ -167,19 +169,19 @@ module.exports = grammar({
       field("schema", $.reference),
       '.',
       field("name", $.reference),
-      optional(field("alias", $._alias))
+      optional($._alias)
     ),
 
     _schema_table_reference: ($) => seq(
       field("schema", $.reference),
       '.',
       field("name", $.reference),
-      optional(field("alias", $._alias))
+      optional($._alias)
     ),
 
     _direct_table_reference: ($) => seq(
       field("name", $.reference),
-      optional(field("alias", $._alias))
+      optional($._alias)
     ),
 
     table_reference: ($) => choice(
@@ -189,12 +191,12 @@ module.exports = grammar({
     ),
 
     where_clause: ($) => seq(
-      keywords.WHERE,
+      $.WHERE,
       $._expression
     ),
 
     order_by_clause: ($) => seq(
-      keywords.ORDER_BY,
+      $.ORDER_BY,
       $.order_by_item,
       repeat(seq($._list_separator, $.order_by_item))
     ),
@@ -204,18 +206,19 @@ module.exports = grammar({
       optional(field("order", choice($.order_by_ascending, $.order_by_descending)))
     ),
 
-    order_by_ascending: ($) => choice(keywords.ASC, keywords.NULLS_FIRST),
-    order_by_descending: ($) => choice(keywords.DESC, keywords.NULLS_LAST),
+    order_by_ascending: ($) => choice($.ASC, $.NULLS_FIRST),
+    order_by_descending: ($) => choice($.DESC, $.NULLS_LAST),
 
     limit_clause: ($) => seq(
-      keywords.LIMIT,
+      $.LIMIT,
       choice($.number_literal, $._reference, /all/i)
     ),
 
     offset_clause: ($) => seq(
-      keywords.OFFSET,
+      $.OFFSET,
       $.number_literal,
       optional(choice(/row/i, /rows/i))
     ),
   },
 });
+
