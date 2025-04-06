@@ -118,3 +118,5 @@
 [
   (number_literal)
 ] @number
+
+(comment) @comment

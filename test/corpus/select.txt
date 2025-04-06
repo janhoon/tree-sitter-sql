@@ -10,15 +10,15 @@ SELECT co1, "co1", 'col1', 1, test();
   (select_statement
     (SELECT)
     (select_list
-      (select_list_item
+      (select_list_item_with_separator
         expression: (column_reference
           column_ref: (reference)))
-      (select_list_item
+      (select_list_item_with_separator
         expression: (column_reference
           column_ref: (reference)))
-      (select_list_item
+      (select_list_item_with_separator
         expression: (string_literal))
-      (select_list_item
+      (select_list_item_with_separator
         expression: (number_literal))
       (select_list_item
         expression: (function_call)))))
@@ -61,7 +61,7 @@ SELECT co1 AS "col1", col2 "col2";
   (select_statement
     (SELECT)
     (select_list
-      (select_list_item
+      (select_list_item_with_separator
         expression: (column_reference
           column_ref: (reference))
         (AS)

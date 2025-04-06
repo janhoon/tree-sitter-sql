@@ -4,6 +4,7 @@
 	"description": "Tree Sitter parser for the SQL language",
 	"repository": "https://github.com/janhoon/tree-sitter-sql",
 	"license": "MIT",
+	"type": "commonjs",
 	"author": {
 		"name": "Jan Hoon",
 		"email": "janhoon97@gmail.com",

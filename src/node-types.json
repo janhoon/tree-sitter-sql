@@ -849,6 +849,10 @@
 				{
 					"type": "select_list_item",
 					"named": true
+				},
+				{
+					"type": "select_list_item_with_separator",
+					"named": true
 				}
 			]
 		}
@@ -919,6 +923,108 @@
 					},
 					{
 						"type": "string_literal",
+						"named": true
+					}
+				]
+			},
+			"inline_comment": {
+				"multiple": false,
+				"required": false,
+				"types": [
+					{
+						"type": "comment",
+						"named": true
+					}
+				]
+			}
+		},
+		"children": {
+			"multiple": false,
+			"required": false,
+			"types": [
+				{
+					"type": "AS",
+					"named": true
+				}
+			]
+		}
+	},
+	{
+		"type": "select_list_item_with_separator",
+		"named": true,
+		"fields": {
+			"alias": {
+				"multiple": false,
+				"required": false,
+				"types": [
+					{
+						"type": "reference",
+						"named": true
+					}
+				]
+			},
+			"comment": {
+				"multiple": false,
+				"required": false,
+				"types": [
+					{
+						"type": "comment",
+						"named": true
+					}
+				]
+			},
+			"expression": {
+				"multiple": false,
+				"required": true,
+				"types": [
+					{
+						"type": "WILDCARD",
+						"named": true
+					},
+					{
+						"type": "boolean_literal",
+						"named": true
+					},
+					{
+						"type": "case_expression",
+						"named": true
+					},
+					{
+						"type": "cast_expression",
+						"named": true
+					},
+					{
+						"type": "column_reference",
+						"named": true
+					},
+					{
+						"type": "function_call",
+						"named": true
+					},
+					{
+						"type": "null_literal",
+						"named": true
+					},
+					{
+						"type": "number_literal",
+						"named": true
+					},
+					{
+						"type": "parenthesized_expression",
+						"named": true
+					},
+					{
+						"type": "string_literal",
+						"named": true
+					}
+				]
+			},
+			"inline_comment": {
+				"multiple": false,
+				"required": false,
+				"types": [
+					{
+						"type": "comment",
 						"named": true
 					}
 				]

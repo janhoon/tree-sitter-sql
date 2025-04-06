@@ -33,7 +33,7 @@ module.exports = grammar({
 				$.null_literal,
 			),
 
-		comment_text: ($) => /[^\n]*/,
+		comment_text: () => /[^\n]*/,
 		comment: ($) => seq($.COMMENT, optional($.comment_text)),
 
 		reference: ($) => choice($._quoted_reference, $._reference),
@@ -128,16 +128,28 @@ module.exports = grammar({
 			),
 
 		select_list: ($) =>
-			seq(
-				$.select_list_item,
-				repeat(seq($._list_separator, $.select_list_item)),
-			),
+			seq(repeat($.select_list_item_with_separator), $.select_list_item),
 
 		select_list_item: ($) =>
-			seq(
-				field("expression", $._expression),
-				optional($._alias),
-				optional(field("inline_comment", $.comment)),
+			prec.right(
+				seq(
+					optional(field("comment", $.comment)),
+					field("expression", $._expression),
+					optional($._alias),
+					optional(field("inline_comment", $.comment)),
+					optional(/\n/),
+				),
+			),
+		select_list_item_with_separator: ($) =>
+			prec.right(
+				seq(
+					optional(field("comment", $.comment)),
+					field("expression", $._expression),
+					optional($._alias),
+					$._list_separator,
+					optional(field("inline_comment", $.comment)),
+					optional(/\n/),
+				),
 			),
 
 		from_clause: ($) =>
