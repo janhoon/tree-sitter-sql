@@ -1,4 +1,7 @@
 -- comment
+
+-- comment
+-- comment
 select
 col1 as col1_alias, -- col1 description
 col2,

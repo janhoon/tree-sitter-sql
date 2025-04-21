@@ -15,8 +15,7 @@ module.exports = grammar({
 	rules: {
 		source_file: ($) => repeat($._statement),
 
-		_statement: ($) =>
-			seq(choice($.select_statement, $.comment), optional(";")),
+		_statement: ($) => seq($.select_statement, optional(";")),
 
 		...keywords,
 
@@ -34,6 +33,7 @@ module.exports = grammar({
 			),
 
 		comment_text: () => /[^\n]*/,
+		_file_start_comment: ($) => repeat1($.comment),
 		comment: ($) => seq($.COMMENT, optional($.comment_text)),
 
 		reference: ($) => choice($._quoted_reference, $._reference),
@@ -118,6 +118,7 @@ module.exports = grammar({
 		// SELECT statement
 		select_statement: ($) =>
 			seq(
+				optional($._file_start_comment),
 				$.SELECT,
 				optional(choice($.DISTINCT, $.ALL)),
 				$.select_list,
