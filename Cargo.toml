@@ -1,5 +1,5 @@
 [package]
-name = "tree-sitter-sql"
+name = "tree-sitter-sql-cadac"
 description = "Tree Sitter parser for the SQL language"
 version = "0.1.1"
 authors = ["Jan Hoon <janhoon97@gmail.com>"]
