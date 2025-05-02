@@ -1,190 +1,5 @@
 [
   {
-    "type": "ALL",
-    "named": true,
-    "fields": {}
-  },
-  {
-    "type": "AS",
-    "named": true,
-    "fields": {}
-  },
-  {
-    "type": "ASC",
-    "named": true,
-    "fields": {}
-  },
-  {
-    "type": "BIGINT",
-    "named": true,
-    "fields": {}
-  },
-  {
-    "type": "BOOLEAN",
-    "named": true,
-    "fields": {}
-  },
-  {
-    "type": "CASE",
-    "named": true,
-    "fields": {}
-  },
-  {
-    "type": "CAST",
-    "named": true,
-    "fields": {}
-  },
-  {
-    "type": "CHAR",
-    "named": true,
-    "fields": {}
-  },
-  {
-    "type": "DATE",
-    "named": true,
-    "fields": {}
-  },
-  {
-    "type": "DECIMAL",
-    "named": true,
-    "fields": {}
-  },
-  {
-    "type": "DESC",
-    "named": true,
-    "fields": {}
-  },
-  {
-    "type": "DISTINCT",
-    "named": true,
-    "fields": {}
-  },
-  {
-    "type": "DOUBLE_PRECISION",
-    "named": true,
-    "fields": {}
-  },
-  {
-    "type": "ELSE",
-    "named": true,
-    "fields": {}
-  },
-  {
-    "type": "END",
-    "named": true,
-    "fields": {}
-  },
-  {
-    "type": "FROM",
-    "named": true,
-    "fields": {}
-  },
-  {
-    "type": "INTEGER",
-    "named": true,
-    "fields": {}
-  },
-  {
-    "type": "INTERVAL",
-    "named": true,
-    "fields": {}
-  },
-  {
-    "type": "JSON",
-    "named": true,
-    "fields": {}
-  },
-  {
-    "type": "JSONB",
-    "named": true,
-    "fields": {}
-  },
-  {
-    "type": "LIMIT",
-    "named": true,
-    "fields": {}
-  },
-  {
-    "type": "NULL",
-    "named": true,
-    "fields": {}
-  },
-  {
-    "type": "NULLS_FIRST",
-    "named": true,
-    "fields": {}
-  },
-  {
-    "type": "NULLS_LAST",
-    "named": true,
-    "fields": {}
-  },
-  {
-    "type": "NUMERIC",
-    "named": true,
-    "fields": {}
-  },
-  {
-    "type": "OFFSET",
-    "named": true,
-    "fields": {}
-  },
-  {
-    "type": "ORDER_BY",
-    "named": true,
-    "fields": {}
-  },
-  {
-    "type": "REAL",
-    "named": true,
-    "fields": {}
-  },
-  {
-    "type": "SELECT",
-    "named": true,
-    "fields": {}
-  },
-  {
-    "type": "SMALLINT",
-    "named": true,
-    "fields": {}
-  },
-  {
-    "type": "TEXT",
-    "named": true,
-    "fields": {}
-  },
-  {
-    "type": "THEN",
-    "named": true,
-    "fields": {}
-  },
-  {
-    "type": "TIME",
-    "named": true,
-    "fields": {}
-  },
-  {
-    "type": "TIMESTAMP",
-    "named": true,
-    "fields": {}
-  },
-  {
-    "type": "UUID",
-    "named": true,
-    "fields": {}
-  },
-  {
-    "type": "VARCHAR",
-    "named": true,
-    "fields": {}
-  },
-  {
-    "type": "WHEN",
-    "named": true,
-    "fields": {}
-  },
-  {
     "type": "boolean_literal",
     "named": true,
     "fields": {}
@@ -197,18 +12,6 @@
       "multiple": true,
       "required": true,
       "types": [
-        {
-          "type": "CASE",
-          "named": true
-        },
-        {
-          "type": "END",
-          "named": true
-        },
-        {
-          "type": "WILDCARD",
-          "named": true
-        },
         {
           "type": "boolean_literal",
           "named": true
@@ -252,6 +55,10 @@
         {
           "type": "when_clause",
           "named": true
+        },
+        {
+          "type": "wildcard",
+          "named": true
         }
       ]
     }
@@ -264,18 +71,6 @@
       "multiple": true,
       "required": true,
       "types": [
-        {
-          "type": "AS",
-          "named": true
-        },
-        {
-          "type": "CAST",
-          "named": true
-        },
-        {
-          "type": "WILDCARD",
-          "named": true
-        },
         {
           "type": "boolean_literal",
           "named": true
@@ -315,6 +110,10 @@
         {
           "type": "string_literal",
           "named": true
+        },
+        {
+          "type": "wildcard",
+          "named": true
         }
       ]
     }
@@ -350,13 +149,9 @@
     "named": true,
     "fields": {},
     "children": {
-      "multiple": true,
-      "required": true,
+      "multiple": false,
+      "required": false,
       "types": [
-        {
-          "type": "COMMENT",
-          "named": true
-        },
         {
           "type": "comment_text",
           "named": true
@@ -369,81 +164,9 @@
     "named": true,
     "fields": {},
     "children": {
-      "multiple": true,
-      "required": true,
+      "multiple": false,
+      "required": false,
       "types": [
-        {
-          "type": "BIGINT",
-          "named": true
-        },
-        {
-          "type": "BOOLEAN",
-          "named": true
-        },
-        {
-          "type": "CHAR",
-          "named": true
-        },
-        {
-          "type": "DATE",
-          "named": true
-        },
-        {
-          "type": "DECIMAL",
-          "named": true
-        },
-        {
-          "type": "DOUBLE_PRECISION",
-          "named": true
-        },
-        {
-          "type": "INTEGER",
-          "named": true
-        },
-        {
-          "type": "INTERVAL",
-          "named": true
-        },
-        {
-          "type": "JSON",
-          "named": true
-        },
-        {
-          "type": "JSONB",
-          "named": true
-        },
-        {
-          "type": "NUMERIC",
-          "named": true
-        },
-        {
-          "type": "REAL",
-          "named": true
-        },
-        {
-          "type": "SMALLINT",
-          "named": true
-        },
-        {
-          "type": "TEXT",
-          "named": true
-        },
-        {
-          "type": "TIME",
-          "named": true
-        },
-        {
-          "type": "TIMESTAMP",
-          "named": true
-        },
-        {
-          "type": "UUID",
-          "named": true
-        },
-        {
-          "type": "VARCHAR",
-          "named": true
-        },
         {
           "type": "number_literal",
           "named": true
@@ -456,17 +179,9 @@
     "named": true,
     "fields": {},
     "children": {
-      "multiple": true,
+      "multiple": false,
       "required": true,
       "types": [
-        {
-          "type": "ELSE",
-          "named": true
-        },
-        {
-          "type": "WILDCARD",
-          "named": true
-        },
         {
           "type": "boolean_literal",
           "named": true
@@ -502,6 +217,10 @@
         {
           "type": "string_literal",
           "named": true
+        },
+        {
+          "type": "wildcard",
+          "named": true
         }
       ]
     }
@@ -514,10 +233,6 @@
       "multiple": true,
       "required": true,
       "types": [
-        {
-          "type": "FROM",
-          "named": true
-        },
         {
           "type": "object_reference",
           "named": true
@@ -534,10 +249,6 @@
       "required": true,
       "types": [
         {
-          "type": "WILDCARD",
-          "named": true
-        },
-        {
           "type": "boolean_literal",
           "named": true
         },
@@ -571,6 +282,10 @@
         },
         {
           "type": "string_literal",
+          "named": true
+        },
+        {
+          "type": "wildcard",
           "named": true
         }
       ]
@@ -596,13 +311,9 @@
     "named": true,
     "fields": {},
     "children": {
-      "multiple": true,
-      "required": true,
+      "multiple": false,
+      "required": false,
       "types": [
-        {
-          "type": "LIMIT",
-          "named": true
-        },
         {
           "type": "number_literal",
           "named": true
@@ -613,17 +324,7 @@
   {
     "type": "null_literal",
     "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "NULL",
-          "named": true
-        }
-      ]
-    }
+    "fields": {}
   },
   {
     "type": "object_reference",
@@ -645,13 +346,9 @@
     "named": true,
     "fields": {},
     "children": {
-      "multiple": true,
+      "multiple": false,
       "required": true,
       "types": [
-        {
-          "type": "OFFSET",
-          "named": true
-        },
         {
           "type": "number_literal",
           "named": true
@@ -662,21 +359,7 @@
   {
     "type": "order_by_ascending",
     "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "ASC",
-          "named": true
-        },
-        {
-          "type": "NULLS_FIRST",
-          "named": true
-        }
-      ]
-    }
+    "fields": {}
   },
   {
     "type": "order_by_clause",
@@ -687,10 +370,6 @@
       "required": true,
       "types": [
         {
-          "type": "ORDER_BY",
-          "named": true
-        },
-        {
           "type": "order_by_item",
           "named": true
         }
@@ -700,21 +379,7 @@
   {
     "type": "order_by_descending",
     "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "DESC",
-          "named": true
-        },
-        {
-          "type": "NULLS_LAST",
-          "named": true
-        }
-      ]
-    }
+    "fields": {}
   },
   {
     "type": "order_by_item",
@@ -724,10 +389,6 @@
         "multiple": false,
         "required": true,
         "types": [
-          {
-            "type": "WILDCARD",
-            "named": true
-          },
           {
             "type": "boolean_literal",
             "named": true
@@ -763,6 +424,10 @@
           {
             "type": "string_literal",
             "named": true
+          },
+          {
+            "type": "wildcard",
+            "named": true
           }
         ]
       },
@@ -790,10 +455,6 @@
       "multiple": false,
       "required": true,
       "types": [
-        {
-          "type": "WILDCARD",
-          "named": true
-        },
         {
           "type": "boolean_literal",
           "named": true
@@ -828,6 +489,10 @@
         },
         {
           "type": "string_literal",
+          "named": true
+        },
+        {
+          "type": "wildcard",
           "named": true
         }
       ]
@@ -886,10 +551,6 @@
         "required": true,
         "types": [
           {
-            "type": "WILDCARD",
-            "named": true
-          },
-          {
             "type": "boolean_literal",
             "named": true
           },
@@ -924,6 +585,10 @@
           {
             "type": "string_literal",
             "named": true
+          },
+          {
+            "type": "wildcard",
+            "named": true
           }
         ]
       },
@@ -937,16 +602,6 @@
           }
         ]
       }
-    },
-    "children": {
-      "multiple": false,
-      "required": false,
-      "types": [
-        {
-          "type": "AS",
-          "named": true
-        }
-      ]
     }
   },
   {
@@ -978,10 +633,6 @@
         "required": true,
         "types": [
           {
-            "type": "WILDCARD",
-            "named": true
-          },
-          {
             "type": "boolean_literal",
             "named": true
           },
@@ -1016,6 +667,10 @@
           {
             "type": "string_literal",
             "named": true
+          },
+          {
+            "type": "wildcard",
+            "named": true
           }
         ]
       },
@@ -1029,16 +684,6 @@
           }
         ]
       }
-    },
-    "children": {
-      "multiple": false,
-      "required": false,
-      "types": [
-        {
-          "type": "AS",
-          "named": true
-        }
-      ]
     }
   },
   {
@@ -1049,18 +694,6 @@
       "multiple": true,
       "required": true,
       "types": [
-        {
-          "type": "ALL",
-          "named": true
-        },
-        {
-          "type": "DISTINCT",
-          "named": true
-        },
-        {
-          "type": "SELECT",
-          "named": true
-        },
         {
           "type": "comment",
           "named": true
@@ -1153,16 +786,6 @@
           }
         ]
       }
-    },
-    "children": {
-      "multiple": false,
-      "required": false,
-      "types": [
-        {
-          "type": "AS",
-          "named": true
-        }
-      ]
     }
   },
   {
@@ -1174,10 +797,6 @@
         "required": true,
         "types": [
           {
-            "type": "WILDCARD",
-            "named": true
-          },
-          {
             "type": "boolean_literal",
             "named": true
           },
@@ -1211,6 +830,10 @@
           },
           {
             "type": "string_literal",
+            "named": true
+          },
+          {
+            "type": "wildcard",
             "named": true
           }
         ]
@@ -1220,10 +843,6 @@
         "required": true,
         "types": [
           {
-            "type": "WILDCARD",
-            "named": true
-          },
-          {
             "type": "boolean_literal",
             "named": true
           },
@@ -1258,24 +877,19 @@
           {
             "type": "string_literal",
             "named": true
+          },
+          {
+            "type": "wildcard",
+            "named": true
           }
         ]
       }
-    },
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "THEN",
-          "named": true
-        },
-        {
-          "type": "WHEN",
-          "named": true
-        }
-      ]
     }
+  },
+  {
+    "type": "wildcard",
+    "named": true,
+    "fields": {}
   },
   {
     "type": "(",
@@ -1286,7 +900,15 @@
     "named": false
   },
   {
+    "type": "*",
+    "named": false
+  },
+  {
     "type": ",",
+    "named": false
+  },
+  {
+    "type": "--",
     "named": false
   },
   {
@@ -1328,10 +950,6 @@
   {
     "type": "CHAR",
     "named": false
-  },
-  {
-    "type": "COMMENT",
-    "named": true
   },
   {
     "type": "DATE",
@@ -1448,10 +1066,6 @@
   {
     "type": "WHEN",
     "named": false
-  },
-  {
-    "type": "WILDCARD",
-    "named": true
   },
   {
     "type": "all",

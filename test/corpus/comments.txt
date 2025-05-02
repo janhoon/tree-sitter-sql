@@ -1,23 +1,23 @@
 ===
-Comment before query
+Comments before query
 ===
 
+-- comment
 -- comment
 SELECT * FROM table;
 
 ---
 
 (source_file
-  (comment
-    (COMMENT)
-    (comment_text))
   (select_statement
-    (SELECT)
+    (comment
+        (comment_text))
+    (comment
+        (comment_text))
     (select_list
       (select_list_item
-        expression: (WILDCARD)))
+        expression: (wildcard)))
     (from_clause
-      (FROM)
       (object_reference
         (table_reference
           name: (reference))))))
@@ -34,16 +34,13 @@ FROM table;
 
 (source_file
   (select_statement
-    (SELECT)
     (select_list
       (select_list_item
         expression: (column_reference
           column_ref: (reference))
         inline_comment: (comment
-          (COMMENT)
           (comment_text))))
   (from_clause
-    (FROM)
     (object_reference
       (table_reference
         name: (reference))))))
@@ -60,11 +57,9 @@ SELECT
 
 (source_file
   (select_statement
-    (SELECT)
     (select_list
       (select_list_item
         comment: (comment
-          (COMMENT)
           (comment_text))
         expression: (column_reference
           column_ref: (reference))))))
@@ -81,18 +76,14 @@ SELECT
 
 (source_file
   (select_statement
-    (SELECT)
     (select_list
       (select_list_item
         comment: (comment
-          (COMMENT)
           (comment_text))
         expression: (column_reference
           column_ref: (reference))
-        (AS)
         alias: (reference)
         inline_comment: (comment
-          (COMMENT)
           (comment_text))))))
 
 ===
@@ -109,20 +100,16 @@ SELECT
 
 (source_file
   (select_statement
-    (SELECT)
     (select_list
       (select_list_item_with_separator
         comment: (comment
-          (COMMENT)
           (comment_text))
         expression: (column_reference
           column_ref: (reference)))
       (select_list_item
         comment: (comment
-          (COMMENT)
           (comment_text))
         expression: (column_reference
           column_ref: (reference))
         inline_comment: (comment
-          (COMMENT)
           (comment_text))))))
