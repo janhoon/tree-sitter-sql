@@ -34,17 +34,17 @@ module.exports = grammar({
 
     comment_text: () => /[^\n]*/,
     _file_start_comment: ($) => repeat1($.comment),
-    comment: ($) => seq($._COMMENT, optional($.comment_text)),
+    comment: ($) => seq($.COMMENT, optional($.comment_text)),
 
     reference: ($) => choice($._quoted_reference, $._reference),
 
     number_literal: () => /[0-9]+(\.[0-9]+)?([eE][+-]?[0-9]+)?/,
     string_literal: ($) => $._single_quoted_reference,
     boolean_literal: () => choice(/true/i, /false/i),
-    null_literal: ($) => $._NULL,
-    wildcard: ($) => $._WILDCARD,
+    null_literal: ($) => $.NULL,
+    wildcard: ($) => $.WILDCARD,
 
-    _alias: ($) => seq(optional($._AS), field("alias", $.reference)),
+    _alias: ($) => seq(optional($.AS), field("alias", $.reference)),
 
     // Expressions
     _expression: ($) =>
@@ -74,54 +74,54 @@ module.exports = grammar({
 
     case_expression: ($) =>
       seq(
-        $._CASE,
+        $.CASE,
         optional($._expression),
         repeat1($.when_clause),
         optional($.else_clause),
-        $._END,
+        $.END,
       ),
 
     when_clause: ($) =>
       seq(
-        $._WHEN,
+        $.WHEN,
         field("when_expression", $._expression),
-        $._THEN,
+        $.THEN,
         field("then_expression", $._expression),
       ),
 
-    else_clause: ($) => seq($._ELSE, $._expression),
+    else_clause: ($) => seq($.ELSE, $._expression),
 
     cast_expression: ($) =>
-      seq($._CAST, "(", $._expression, $._AS, $.data_type, ")"),
+      seq($.CAST, "(", $._expression, $.AS, $.data_type, ")"),
 
     data_type: ($) =>
       choice(
-        $._INTEGER,
-        $._BIGINT,
-        $._SMALLINT,
-        $._NUMERIC,
-        $._DECIMAL,
-        $._REAL,
-        $._DOUBLE_PRECISION,
-        seq($._VARCHAR, optional(seq("(", $.number_literal, ")"))),
-        seq($._CHAR, optional(seq("(", $.number_literal, ")"))),
-        $._TEXT,
-        $._BOOLEAN,
-        $._DATE,
-        $._TIME,
-        $._TIMESTAMP,
-        $._INTERVAL,
-        $._JSON,
-        $._JSONB,
-        $._UUID,
+        $.INTEGER,
+        $.BIGINT,
+        $.SMALLINT,
+        $.NUMERIC,
+        $.DECIMAL,
+        $.REAL,
+        $.DOUBLE_PRECISION,
+        seq($.VARCHAR, optional(seq("(", $.number_literal, ")"))),
+        seq($.CHAR, optional(seq("(", $.number_literal, ")"))),
+        $.TEXT,
+        $.BOOLEAN,
+        $.DATE,
+        $.TIME,
+        $.TIMESTAMP,
+        $.INTERVAL,
+        $.JSON,
+        $.JSONB,
+        $.UUID,
       ),
 
     // SELECT statement
     select_statement: ($) =>
       seq(
         optional($._file_start_comment),
-        $._SELECT,
-        optional(choice($._DISTINCT, $._ALL)),
+        $.SELECT,
+        optional(choice($.DISTINCT, $.ALL)),
         $.select_list,
         optional($.from_clause),
         optional($.order_by_clause),
@@ -156,7 +156,7 @@ module.exports = grammar({
 
     from_clause: ($) =>
       seq(
-        $._FROM,
+        $.FROM,
         $.object_reference,
         repeat(seq($._list_separator, $.object_reference)),
       ),
@@ -191,11 +191,11 @@ module.exports = grammar({
         $._direct_table_reference,
       ),
 
-    where_clause: ($) => seq($._WHERE, $._expression),
+    where_clause: ($) => seq($.WHERE, $._expression),
 
     order_by_clause: ($) =>
       seq(
-        $._ORDER_BY,
+        $.ORDER_BY,
         $.order_by_item,
         repeat(seq($._list_separator, $.order_by_item)),
       ),
@@ -208,13 +208,13 @@ module.exports = grammar({
         ),
       ),
 
-    order_by_ascending: ($) => choice($._ASC, $._NULLS_FIRST),
-    order_by_descending: ($) => choice($._DESC, $._NULLS_LAST),
+    order_by_ascending: ($) => choice($.ASC, $.NULLS_FIRST),
+    order_by_descending: ($) => choice($.DESC, $.NULLS_LAST),
 
     limit_clause: ($) =>
-      seq($._LIMIT, choice($.number_literal, $._reference, /all/i)),
+      seq($.LIMIT, choice($.number_literal, $._reference, /all/i)),
 
     offset_clause: ($) =>
-      seq($._OFFSET, $.number_literal, optional(choice(/row/i, /rows/i))),
+      seq($.OFFSET, $.number_literal, optional(choice(/row/i, /rows/i))),
   },
 });

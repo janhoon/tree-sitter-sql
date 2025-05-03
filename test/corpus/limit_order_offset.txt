@@ -8,14 +8,18 @@ SELECT * FROM table LIMIT 10;
 
 (source_file
   (select_statement
+    (SELECT)
     (select_list
       (select_list_item
-        expression: (wildcard)))
+        expression: (wildcard
+          (WILDCARD))))
     (from_clause
+      (FROM)
       (object_reference
         (table_reference
           name: (reference))))
     (limit_clause
+      (LIMIT)
       (number_literal))))
 
 ===
@@ -28,14 +32,18 @@ SELECT * FROM table OFFSET 10;
 
 (source_file
   (select_statement
+    (SELECT)
     (select_list
       (select_list_item
-        expression: (wildcard)))
+        expression: (wildcard
+          (WILDCARD))))
     (from_clause
+      (FROM)
       (object_reference
         (table_reference
           name: (reference))))
     (offset_clause
+      (OFFSET)
       (number_literal))))
 
 ===
@@ -48,16 +56,21 @@ SELECT * FROM table LIMIT 10 OFFSET 10;
 
 (source_file
   (select_statement
+    (SELECT)
     (select_list
       (select_list_item
-        expression: (wildcard)))
+        expression: (wildcard
+          (WILDCARD))))
     (from_clause
+      (FROM)
       (object_reference
         (table_reference
           name: (reference))))
     (limit_clause
+      (LIMIT)
       (number_literal))
     (offset_clause
+      (OFFSET)
       (number_literal))))
 
 ===
@@ -70,19 +83,25 @@ SELECT * FROM table ORDER BY col desc, col2 asc;
 
 (source_file
   (select_statement
+    (SELECT)
     (select_list
       (select_list_item
-        expression: (wildcard)))
+        expression: (wildcard
+          (WILDCARD))))
     (from_clause
+      (FROM)
       (object_reference
         (table_reference
           name: (reference))))
     (order_by_clause
+      (ORDER_BY)
       (order_by_item
         expression: (column_reference
           column_ref: (reference))
-        order: (order_by_descending))
+        order: (order_by_descending
+          (DESC)))
       (order_by_item
         expression: (column_reference
           column_ref: (reference))
-        order: (order_by_ascending)))))
+        order: (order_by_ascending
+          (ASC))))))

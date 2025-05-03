@@ -8,10 +8,13 @@ SELECT * FROM some_random_table;
 
 (source_file
   (select_statement
+    (SELECT)
     (select_list
       (select_list_item
-        expression: (wildcard)))
+        expression: (wildcard
+          (WILDCARD))))
     (from_clause
+      (FROM)
       (object_reference
         (table_reference
           name: (reference))))))
@@ -26,13 +29,17 @@ SELECT * FROM table AS t;
 
 (source_file
   (select_statement
+    (SELECT)
     (select_list
       (select_list_item
-        expression: (wildcard)))
+        expression: (wildcard
+          (WILDCARD))))
     (from_clause
+      (FROM)
       (object_reference
         (table_reference
           name: (reference)
+          (AS)
           alias: (reference))))))
 
 ===
@@ -45,15 +52,18 @@ SELECT t.col FROM table1 AS t;
 
 (source_file
   (select_statement
+    (SELECT)
     (select_list
       (select_list_item
         expression: (column_reference
             table_ref: (reference)
             column_ref: (reference))))
     (from_clause
+      (FROM)
       (object_reference
         (table_reference
           name: (reference)
+          (AS)
           alias: (reference))))))
 
 ===
@@ -66,10 +76,13 @@ SELECT * FROM schema.table;
 
 (source_file
   (select_statement
+    (SELECT)
     (select_list
       (select_list_item
-        expression: (wildcard)))
+        expression: (wildcard
+          (WILDCARD))))
     (from_clause
+      (FROM)
       (object_reference
         (table_reference
           schema: (reference)
@@ -85,10 +98,13 @@ SELECT * FROM database.schema.table;
 
 (source_file
   (select_statement
+    (SELECT)
     (select_list
       (select_list_item
-        expression: (wildcard)))
+        expression: (wildcard
+          (WILDCARD))))
     (from_clause
+      (FROM)
       (object_reference
         (table_reference
           database: (reference)

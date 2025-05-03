@@ -121,14 +121,14 @@ const keywords = [
 const keywordRules = {};
 
 for (const keyword of keywords) {
-  keywordRules[`_${keyword}`] = toKeyword(keyword);
+  keywordRules[keyword] = toKeyword(keyword);
 }
 
 module.exports = {
   keywords: {
     ...keywordRules,
-    _WILDCARD: () => "*",
-    _COMMENT: () => "--",
+    WILDCARD: () => "*",
+    COMMENT: () => "--",
   },
 };
 
