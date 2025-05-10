@@ -120,6 +120,7 @@ module.exports = grammar({
     select_statement: ($) =>
       seq(
         optional($._file_start_comment),
+        optional($.common_table_expressions),
         $.SELECT,
         optional(choice($.DISTINCT, $.ALL)),
         $.select_list,
@@ -128,6 +129,20 @@ module.exports = grammar({
         optional($.limit_clause),
         optional($.offset_clause),
       ),
+
+    common_table_expressions: ($) => seq(
+      $.WITH,
+      $.common_table_expression,
+      repeat(seq($._list_separator, $.common_table_expression)),
+    ),
+
+    common_table_expression: ($) => seq(
+      $.reference,
+      $.AS,
+      "(",
+      $.select_statement,
+      ")",
+    ),
 
     select_list: ($) =>
       seq(repeat($.select_list_item_with_separator), $.select_list_item),
