@@ -4,7 +4,7 @@ endif
 
 LANGUAGE_NAME := tree-sitter-sql
 HOMEPAGE_URL := https://github.com/janhoon/tree-sitter-sql
-VERSION := 0.1.3
+VERSION := 0.1.4
 
 # repository
 SRC_DIR := src
