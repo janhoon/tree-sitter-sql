@@ -190,6 +190,11 @@
     "fields": {}
   },
   {
+    "type": "alias",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "boolean_literal",
     "named": true,
     "fields": {}
@@ -211,6 +216,10 @@
           "named": true
         },
         {
+          "type": "WILDCARD",
+          "named": true
+        },
+        {
           "type": "boolean_literal",
           "named": true
         },
@@ -224,6 +233,10 @@
         },
         {
           "type": "column_reference",
+          "named": true
+        },
+        {
+          "type": "column_table_reference",
           "named": true
         },
         {
@@ -253,10 +266,6 @@
         {
           "type": "when_clause",
           "named": true
-        },
-        {
-          "type": "wildcard",
-          "named": true
         }
       ]
     }
@@ -278,6 +287,10 @@
           "named": true
         },
         {
+          "type": "WILDCARD",
+          "named": true
+        },
+        {
           "type": "boolean_literal",
           "named": true
         },
@@ -291,6 +304,10 @@
         },
         {
           "type": "column_reference",
+          "named": true
+        },
+        {
+          "type": "column_table_reference",
           "named": true
         },
         {
@@ -316,10 +333,6 @@
         {
           "type": "string_literal",
           "named": true
-        },
-        {
-          "type": "wildcard",
-          "named": true
         }
       ]
     }
@@ -327,28 +340,12 @@
   {
     "type": "column_reference",
     "named": true,
-    "fields": {
-      "column_ref": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "reference",
-            "named": true
-          }
-        ]
-      },
-      "table_ref": {
-        "multiple": false,
-        "required": false,
-        "types": [
-          {
-            "type": "reference",
-            "named": true
-          }
-        ]
-      }
-    }
+    "fields": {}
+  },
+  {
+    "type": "column_table_reference",
+    "named": true,
+    "fields": {}
   },
   {
     "type": "comment",
@@ -379,10 +376,6 @@
       "types": [
         {
           "type": "AS",
-          "named": true
-        },
-        {
-          "type": "reference",
           "named": true
         },
         {
@@ -511,6 +504,10 @@
           "named": true
         },
         {
+          "type": "WILDCARD",
+          "named": true
+        },
+        {
           "type": "boolean_literal",
           "named": true
         },
@@ -524,6 +521,10 @@
         },
         {
           "type": "column_reference",
+          "named": true
+        },
+        {
+          "type": "column_table_reference",
           "named": true
         },
         {
@@ -544,10 +545,6 @@
         },
         {
           "type": "string_literal",
-          "named": true
-        },
-        {
-          "type": "wildcard",
           "named": true
         }
       ]
@@ -581,6 +578,10 @@
       "required": true,
       "types": [
         {
+          "type": "WILDCARD",
+          "named": true
+        },
+        {
           "type": "boolean_literal",
           "named": true
         },
@@ -594,6 +595,10 @@
         },
         {
           "type": "column_reference",
+          "named": true
+        },
+        {
+          "type": "column_table_reference",
           "named": true
         },
         {
@@ -614,10 +619,6 @@
         },
         {
           "type": "string_literal",
-          "named": true
-        },
-        {
-          "type": "wildcard",
           "named": true
         }
       ]
@@ -768,9 +769,17 @@
     "named": true,
     "fields": {
       "expression": {
-        "multiple": false,
+        "multiple": true,
         "required": true,
         "types": [
+          {
+            "type": ".",
+            "named": false
+          },
+          {
+            "type": "WILDCARD",
+            "named": true
+          },
           {
             "type": "boolean_literal",
             "named": true
@@ -785,6 +794,10 @@
           },
           {
             "type": "column_reference",
+            "named": true
+          },
+          {
+            "type": "column_table_reference",
             "named": true
           },
           {
@@ -805,10 +818,6 @@
           },
           {
             "type": "string_literal",
-            "named": true
-          },
-          {
-            "type": "wildcard",
             "named": true
           }
         ]
@@ -834,9 +843,13 @@
     "named": true,
     "fields": {},
     "children": {
-      "multiple": false,
+      "multiple": true,
       "required": true,
       "types": [
+        {
+          "type": "WILDCARD",
+          "named": true
+        },
         {
           "type": "boolean_literal",
           "named": true
@@ -851,6 +864,10 @@
         },
         {
           "type": "column_reference",
+          "named": true
+        },
+        {
+          "type": "column_table_reference",
           "named": true
         },
         {
@@ -872,18 +889,9 @@
         {
           "type": "string_literal",
           "named": true
-        },
-        {
-          "type": "wildcard",
-          "named": true
         }
       ]
     }
-  },
-  {
-    "type": "reference",
-    "named": true,
-    "fields": {}
   },
   {
     "type": "select_list",
@@ -896,10 +904,6 @@
         {
           "type": "select_list_item",
           "named": true
-        },
-        {
-          "type": "select_list_item_with_separator",
-          "named": true
         }
       ]
     }
@@ -907,182 +911,65 @@
   {
     "type": "select_list_item",
     "named": true,
-    "fields": {
-      "alias": {
-        "multiple": false,
-        "required": false,
-        "types": [
-          {
-            "type": "reference",
-            "named": true
-          }
-        ]
-      },
-      "comment": {
-        "multiple": false,
-        "required": false,
-        "types": [
-          {
-            "type": "comment",
-            "named": true
-          }
-        ]
-      },
-      "expression": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "boolean_literal",
-            "named": true
-          },
-          {
-            "type": "case_expression",
-            "named": true
-          },
-          {
-            "type": "cast_expression",
-            "named": true
-          },
-          {
-            "type": "column_reference",
-            "named": true
-          },
-          {
-            "type": "function_call",
-            "named": true
-          },
-          {
-            "type": "null_literal",
-            "named": true
-          },
-          {
-            "type": "number_literal",
-            "named": true
-          },
-          {
-            "type": "parenthesized_expression",
-            "named": true
-          },
-          {
-            "type": "string_literal",
-            "named": true
-          },
-          {
-            "type": "wildcard",
-            "named": true
-          }
-        ]
-      },
-      "inline_comment": {
-        "multiple": false,
-        "required": false,
-        "types": [
-          {
-            "type": "comment",
-            "named": true
-          }
-        ]
-      }
-    },
+    "fields": {},
     "children": {
-      "multiple": false,
-      "required": false,
+      "multiple": true,
+      "required": true,
       "types": [
         {
           "type": "AS",
           "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "select_list_item_with_separator",
-    "named": true,
-    "fields": {
-      "alias": {
-        "multiple": false,
-        "required": false,
-        "types": [
-          {
-            "type": "reference",
-            "named": true
-          }
-        ]
-      },
-      "comment": {
-        "multiple": false,
-        "required": false,
-        "types": [
-          {
-            "type": "comment",
-            "named": true
-          }
-        ]
-      },
-      "expression": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "boolean_literal",
-            "named": true
-          },
-          {
-            "type": "case_expression",
-            "named": true
-          },
-          {
-            "type": "cast_expression",
-            "named": true
-          },
-          {
-            "type": "column_reference",
-            "named": true
-          },
-          {
-            "type": "function_call",
-            "named": true
-          },
-          {
-            "type": "null_literal",
-            "named": true
-          },
-          {
-            "type": "number_literal",
-            "named": true
-          },
-          {
-            "type": "parenthesized_expression",
-            "named": true
-          },
-          {
-            "type": "string_literal",
-            "named": true
-          },
-          {
-            "type": "wildcard",
-            "named": true
-          }
-        ]
-      },
-      "inline_comment": {
-        "multiple": false,
-        "required": false,
-        "types": [
-          {
-            "type": "comment",
-            "named": true
-          }
-        ]
-      }
-    },
-    "children": {
-      "multiple": false,
-      "required": false,
-      "types": [
+        },
         {
-          "type": "AS",
+          "type": "WILDCARD",
+          "named": true
+        },
+        {
+          "type": "alias",
+          "named": true
+        },
+        {
+          "type": "boolean_literal",
+          "named": true
+        },
+        {
+          "type": "case_expression",
+          "named": true
+        },
+        {
+          "type": "cast_expression",
+          "named": true
+        },
+        {
+          "type": "column_reference",
+          "named": true
+        },
+        {
+          "type": "column_table_reference",
+          "named": true
+        },
+        {
+          "type": "comment",
+          "named": true
+        },
+        {
+          "type": "function_call",
+          "named": true
+        },
+        {
+          "type": "null_literal",
+          "named": true
+        },
+        {
+          "type": "number_literal",
+          "named": true
+        },
+        {
+          "type": "parenthesized_expression",
+          "named": true
+        },
+        {
+          "type": "string_literal",
           "named": true
         }
       ]
@@ -1163,54 +1050,17 @@
   {
     "type": "table_reference",
     "named": true,
-    "fields": {
-      "alias": {
-        "multiple": false,
-        "required": false,
-        "types": [
-          {
-            "type": "reference",
-            "named": true
-          }
-        ]
-      },
-      "database": {
-        "multiple": false,
-        "required": false,
-        "types": [
-          {
-            "type": "reference",
-            "named": true
-          }
-        ]
-      },
-      "name": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "reference",
-            "named": true
-          }
-        ]
-      },
-      "schema": {
-        "multiple": false,
-        "required": false,
-        "types": [
-          {
-            "type": "reference",
-            "named": true
-          }
-        ]
-      }
-    },
+    "fields": {},
     "children": {
-      "multiple": false,
+      "multiple": true,
       "required": false,
       "types": [
         {
           "type": "AS",
+          "named": true
+        },
+        {
+          "type": "alias",
           "named": true
         }
       ]
@@ -1221,9 +1071,17 @@
     "named": true,
     "fields": {
       "then_expression": {
-        "multiple": false,
+        "multiple": true,
         "required": true,
         "types": [
+          {
+            "type": ".",
+            "named": false
+          },
+          {
+            "type": "WILDCARD",
+            "named": true
+          },
           {
             "type": "boolean_literal",
             "named": true
@@ -1238,6 +1096,10 @@
           },
           {
             "type": "column_reference",
+            "named": true
+          },
+          {
+            "type": "column_table_reference",
             "named": true
           },
           {
@@ -1258,18 +1120,22 @@
           },
           {
             "type": "string_literal",
-            "named": true
-          },
-          {
-            "type": "wildcard",
             "named": true
           }
         ]
       },
       "when_expression": {
-        "multiple": false,
+        "multiple": true,
         "required": true,
         "types": [
+          {
+            "type": ".",
+            "named": false
+          },
+          {
+            "type": "WILDCARD",
+            "named": true
+          },
           {
             "type": "boolean_literal",
             "named": true
@@ -1284,6 +1150,10 @@
           },
           {
             "type": "column_reference",
+            "named": true
+          },
+          {
+            "type": "column_table_reference",
             "named": true
           },
           {
@@ -1304,10 +1174,6 @@
           },
           {
             "type": "string_literal",
-            "named": true
-          },
-          {
-            "type": "wildcard",
             "named": true
           }
         ]
@@ -1323,21 +1189,6 @@
         },
         {
           "type": "WHEN",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "wildcard",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "WILDCARD",
           "named": true
         }
       ]

@@ -21,9 +21,9 @@ module.exports = grammar({
 
     // Basic elements
     _list_separator: () => ",",
-    _quoted_reference: () => /"[^"]*"/,
     _single_quoted_reference: () => /'[^']*'/,
-    _reference: () => /[a-zA-Z][a-zA-Z0-9_]*/,
+    _quoted_reference: () => /"[^"]*"/,
+    _unquoted_reference: () => /[a-zA-Z][a-zA-Z0-9_]*/,
     _literal: ($) =>
       choice(
         $.number_literal,
@@ -36,21 +36,22 @@ module.exports = grammar({
     _file_start_comment: ($) => repeat1($.comment),
     comment: ($) => seq($.COMMENT, optional($.comment_text)),
 
-    reference: ($) => choice($._quoted_reference, $._reference),
+    _reference: ($) => choice($._quoted_reference, $._unquoted_reference),
 
     number_literal: () => /[0-9]+(\.[0-9]+)?([eE][+-]?[0-9]+)?/,
     string_literal: ($) => $._single_quoted_reference,
     boolean_literal: () => choice(/true/i, /false/i),
     null_literal: ($) => $.NULL,
-    wildcard: ($) => $.WILDCARD,
 
-    _alias: ($) => seq(optional($.AS), field("alias", $.reference)),
+    alias: ($) => $._reference,
+
+    _alias: ($) => seq(optional($.AS), $.alias),
 
     // Expressions
     _expression: ($) =>
       choice(
-        $.wildcard,
-        $.column_reference,
+        $.WILDCARD,
+        $._column_reference,
         $._literal,
         $.function_call,
         $.parenthesized_expression,
@@ -58,14 +59,17 @@ module.exports = grammar({
         $.cast_expression,
       ),
 
-    column_reference: ($) =>
-      seq(
-        optional(seq(field("table_ref", $.reference), ".")),
-        field("column_ref", $.reference),
+    column_table_reference: ($) => $._reference,
+    column_reference: ($) => $._reference,
+
+    _column_reference: ($) =>
+      choice(
+        seq($.column_table_reference, ".", $.column_reference),
+        $.column_reference,
       ),
 
     function_call: ($) =>
-      seq($._reference, "(", optional($.function_arguments), ")"),
+      prec(3, seq($._reference, "(", optional($.function_arguments), ")")),
 
     function_arguments: ($) =>
       seq($._expression, repeat(seq($._list_separator, $._expression))),
@@ -130,42 +134,37 @@ module.exports = grammar({
         optional($.offset_clause),
       ),
 
-    common_table_expressions: ($) => seq(
-      $.WITH,
-      $.common_table_expression,
-      repeat(seq($._list_separator, $.common_table_expression)),
-    ),
+    common_table_expressions: ($) =>
+      seq(
+        $.WITH,
+        $.common_table_expression,
+        repeat(seq($._list_separator, $.common_table_expression)),
+      ),
 
-    common_table_expression: ($) => seq(
-      $.reference,
-      $.AS,
-      "(",
-      $.select_statement,
-      ")",
-    ),
+    common_table_expression: ($) =>
+      seq($._reference, $.AS, "(", $.select_statement, ")"),
 
-    select_list: ($) =>
-      seq(repeat($.select_list_item_with_separator), $.select_list_item),
+    select_list: ($) => prec.right(repeat1($.select_list_item)),
 
     select_list_item: ($) =>
-      prec.right(
-        seq(
-          optional(field("comment", $.comment)),
-          field("expression", $._expression),
-          optional($._alias),
-          optional(field("inline_comment", $.comment)),
-          optional(/\n/),
+      choice(
+        prec.right(
+          1,
+          seq(
+            repeat(seq($.comment, /\n/)),
+            $._expression,
+            optional($._alias),
+            choice($._list_separator, seq($._list_separator, $.comment, /\n/)),
+          ),
         ),
-      ),
-    select_list_item_with_separator: ($) =>
-      prec.right(
-        seq(
-          optional(field("comment", $.comment)),
-          field("expression", $._expression),
-          optional($._alias),
-          $._list_separator,
-          optional(field("inline_comment", $.comment)),
-          optional(/\n/),
+        prec.right(
+          2,
+          seq(
+            repeat(seq($.comment, /\n/)),
+            $._expression,
+            optional($._alias),
+            optional(seq($.comment, /\n/)),
+          ),
         ),
       ),
 
@@ -180,24 +179,24 @@ module.exports = grammar({
 
     _database_schema_table_reference: ($) =>
       seq(
-        field("database", $.reference),
+        field("database", $._reference),
         ".",
-        field("schema", $.reference),
+        field("schema", $._reference),
         ".",
-        field("name", $.reference),
+        field("name", $._reference),
         optional($._alias),
       ),
 
     _schema_table_reference: ($) =>
       seq(
-        field("schema", $.reference),
+        field("schema", $._reference),
         ".",
-        field("name", $.reference),
+        field("name", $._reference),
         optional($._alias),
       ),
 
     _direct_table_reference: ($) =>
-      seq(field("name", $.reference), optional($._alias)),
+      seq(field("name", $._reference), optional($._alias)),
 
     table_reference: ($) =>
       choice(

@@ -1,88 +1,104 @@
 ===
-Select using wildcard
+Simple wildcard
 ===
 
-SELECT *;
+SELECT *
 
 ---
-
-(source_file
-    (select_statement
-        (SELECT)
-        (select_list
-            (select_list_item
-                expression: (wildcard
-                    (WILDCARD))))))
-
-===
-Simple SELECT query
-===
-
-SELECT co1, "co1", 'col1', 1, test();
-
----
-
-(source_file
-  (select_statement
-    (SELECT)
-    (select_list
-      (select_list_item_with_separator
-        expression: (column_reference
-          column_ref: (reference)))
-      (select_list_item_with_separator
-        expression: (column_reference
-          column_ref: (reference)))
-      (select_list_item_with_separator
-        expression: (string_literal))
-      (select_list_item_with_separator
-        expression: (number_literal))
-      (select_list_item
-        expression: (function_call)))))
-
-===
-SELECT case statement
-===
-
-SELECT case when 1 then 2 else 3 end;
-
----
-
 (source_file
   (select_statement
     (SELECT)
     (select_list
       (select_list_item
-        expression:
-          (case_expression
-            (CASE)
-            (when_clause
-                (WHEN)
-                when_expression: (number_literal)
-                (THEN)
-                then_expression: (number_literal))
-            (else_clause
-                (ELSE)
-                (number_literal))
-            (END))))))
+        (WILDCARD)))))
 
 ===
-Simple SELECT query with alias
+Select 3 columns
 ===
 
-SELECT co1 AS "col1", col2 "col2";
+SELECT
+    col_1,
+    col_2,
+    col_3
 
 ---
-
 (source_file
   (select_statement
     (SELECT)
     (select_list
-      (select_list_item_with_separator
-        expression: (column_reference
-          column_ref: (reference))
-          (AS)
-        alias: (reference))
       (select_list_item
-        expression: (column_reference
-            column_ref: (reference))
-          alias: (reference)))))
+        (column_reference))
+      (select_list_item
+        (column_reference))
+      (select_list_item
+        (column_reference)))))
+
+===
+Select with comments
+===
+
+SELECT
+    -- coment here
+    -- and here
+    commented_col, -- last one here
+    inline_col, -- inline only
+
+---
+(source_file
+  (select_statement
+    (SELECT)
+    (select_list
+      (select_list_item
+        (comment
+          (COMMENT)
+          (comment_text))
+        (comment
+          (COMMENT)
+          (comment_text))
+        (column_reference)
+        (comment
+          (COMMENT)
+          (comment_text)))
+      (select_list_item
+        (column_reference)
+        (comment
+          (COMMENT)
+          (comment_text))))))
+
+===
+Select with alias
+===
+
+SELECT
+    before as after,
+    before as "after_with_quotes"
+
+---
+(source_file
+  (select_statement
+    (SELECT)
+    (select_list
+      (select_list_item
+        (column_reference)
+        (AS)
+        (alias))
+      (select_list_item
+        (column_reference)
+        (AS)
+        (alias)))))
+
+===
+Select with a reference
+===
+
+SELECT
+    a.col_from_a
+
+---
+(source_file
+  (select_statement
+    (SELECT)
+    (select_list
+      (select_list_item
+        (column_table_reference)
+        (column_reference)))))

@@ -1,0 +1,39 @@
+===
+Basic select CTE
+===
+
+WITH a AS (
+    SELECT
+        b
+    from
+        c
+)
+SELECT
+    b
+FROM
+    a
+
+---
+(source_file
+  (select_statement
+    (common_table_expressions
+        (WITH)
+        (common_table_expression
+        (AS)
+        (select_statement
+            (SELECT)
+            (select_list
+            (select_list_item
+                (column_reference)))
+            (from_clause
+            (FROM)
+            (object_reference
+                (table_reference))))))
+    (SELECT)
+    (select_list
+      (select_list_item
+        (column_reference)))
+    (from_clause
+        (FROM)
+        (object_reference
+        (table_reference)))))
