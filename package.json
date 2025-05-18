@@ -1,6 +1,6 @@
 {
 	"name": "@janhoon/tree-sitter-sql",
-	"version": "0.1.5",
+	"version": "0.1.6",
 	"description": "Tree Sitter parser for the SQL language",
 	"repository": "https://github.com/janhoon/tree-sitter-sql",
 	"license": "MIT",
