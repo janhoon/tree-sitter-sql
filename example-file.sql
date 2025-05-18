@@ -1,6 +1,6 @@
-select
+SELECT
     t.col1 as col1,
     t.col2
-from
-    table table as t
+FROM
+    database.schema.table as t
 

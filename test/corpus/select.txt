@@ -102,3 +102,4 @@ SELECT
       (select_list_item
         (column_table_reference)
         (column_reference)))))
+        
