@@ -2391,40 +2391,52 @@
         }
       ]
     },
+    "database_name": {
+      "type": "PREC",
+      "value": 3,
+      "content": {
+        "type": "SYMBOL",
+        "name": "_reference"
+      }
+    },
+    "schema_name": {
+      "type": "PREC",
+      "value": 2,
+      "content": {
+        "type": "SYMBOL",
+        "name": "_reference"
+      }
+    },
+    "table_name": {
+      "type": "PREC",
+      "value": 1,
+      "content": {
+        "type": "SYMBOL",
+        "name": "_reference"
+      }
+    },
     "_database_schema_table_reference": {
       "type": "SEQ",
       "members": [
         {
-          "type": "FIELD",
-          "name": "database",
-          "content": {
-            "type": "SYMBOL",
-            "name": "_reference"
-          }
+          "type": "SYMBOL",
+          "name": "database_name"
         },
         {
           "type": "STRING",
           "value": "."
         },
         {
-          "type": "FIELD",
-          "name": "schema",
-          "content": {
-            "type": "SYMBOL",
-            "name": "_reference"
-          }
+          "type": "SYMBOL",
+          "name": "schema_name"
         },
         {
           "type": "STRING",
           "value": "."
         },
         {
-          "type": "FIELD",
-          "name": "name",
-          "content": {
-            "type": "SYMBOL",
-            "name": "_reference"
-          }
+          "type": "SYMBOL",
+          "name": "table_name"
         },
         {
           "type": "CHOICE",
@@ -2444,24 +2456,16 @@
       "type": "SEQ",
       "members": [
         {
-          "type": "FIELD",
-          "name": "schema",
-          "content": {
-            "type": "SYMBOL",
-            "name": "_reference"
-          }
+          "type": "SYMBOL",
+          "name": "schema_name"
         },
         {
           "type": "STRING",
           "value": "."
         },
         {
-          "type": "FIELD",
-          "name": "name",
-          "content": {
-            "type": "SYMBOL",
-            "name": "_reference"
-          }
+          "type": "SYMBOL",
+          "name": "table_name"
         },
         {
           "type": "CHOICE",
@@ -2481,12 +2485,8 @@
       "type": "SEQ",
       "members": [
         {
-          "type": "FIELD",
-          "name": "name",
-          "content": {
-            "type": "SYMBOL",
-            "name": "_reference"
-          }
+          "type": "SYMBOL",
+          "name": "table_name"
         },
         {
           "type": "CHOICE",

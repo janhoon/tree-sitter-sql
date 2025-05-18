@@ -177,26 +177,30 @@ module.exports = grammar({
 
     object_reference: ($) => choice($.table_reference),
 
+    database_name: ($) => prec(3, $._reference),
+    schema_name: ($) => prec(2, $._reference),
+    table_name: ($) => prec(1, $._reference),
+
     _database_schema_table_reference: ($) =>
       seq(
-        field("database", $._reference),
+        $.database_name,
         ".",
-        field("schema", $._reference),
+        $.schema_name,
         ".",
-        field("name", $._reference),
+        $.table_name,
         optional($._alias),
       ),
 
     _schema_table_reference: ($) =>
       seq(
-        field("schema", $._reference),
+        $.schema_name,
         ".",
-        field("name", $._reference),
+        $.table_name,
         optional($._alias),
       ),
 
     _direct_table_reference: ($) =>
-      seq(field("name", $._reference), optional($._alias)),
+      seq($.table_name, optional($._alias)),
 
     table_reference: ($) =>
       choice(

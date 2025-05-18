@@ -492,6 +492,11 @@
     }
   },
   {
+    "type": "database_name",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "else_clause",
     "named": true,
     "fields": {},
@@ -894,6 +899,11 @@
     }
   },
   {
+    "type": "schema_name",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "select_list",
     "named": true,
     "fields": {},
@@ -1048,12 +1058,17 @@
     "fields": {}
   },
   {
+    "type": "table_name",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "table_reference",
     "named": true,
     "fields": {},
     "children": {
       "multiple": true,
-      "required": false,
+      "required": true,
       "types": [
         {
           "type": "AS",
@@ -1061,6 +1076,18 @@
         },
         {
           "type": "alias",
+          "named": true
+        },
+        {
+          "type": "database_name",
+          "named": true
+        },
+        {
+          "type": "schema_name",
+          "named": true
+        },
+        {
+          "type": "table_name",
           "named": true
         }
       ]
