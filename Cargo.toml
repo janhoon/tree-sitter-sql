@@ -1,7 +1,7 @@
 [package]
 name = "tree-sitter-sql-cadac"
 description = "Tree Sitter parser for the SQL language"
-version = "0.1.6"
+version = "0.1.7"
 authors = ["Jan Hoon <janhoon97@gmail.com>"]
 license = "MIT"
 readme = "README.md"

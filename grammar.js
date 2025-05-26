@@ -12,6 +12,10 @@ const { keywords } = require("./keywords");
 module.exports = grammar({
   name: "sql",
 
+  conflicts: ($) => [
+    [$.database_name, $.schema_name],
+  ],
+
   rules: {
     source_file: ($) => repeat($._statement),
 
@@ -177,9 +181,9 @@ module.exports = grammar({
 
     object_reference: ($) => choice($.table_reference),
 
-    database_name: ($) => prec(3, $._reference),
-    schema_name: ($) => prec(2, $._reference),
-    table_name: ($) => prec(1, $._reference),
+    database_name: ($) => $._reference,
+    schema_name: ($) => $._reference,
+    table_name: ($) => $._reference,
 
     _database_schema_table_reference: ($) =>
       seq(
@@ -199,14 +203,14 @@ module.exports = grammar({
         optional($._alias),
       ),
 
-    _direct_table_reference: ($) =>
+    _table_reference: ($) =>
       seq($.table_name, optional($._alias)),
 
     table_reference: ($) =>
       choice(
-        prec(1, $._database_schema_table_reference),
+        prec(3, $._database_schema_table_reference),
         prec(2, $._schema_table_reference),
-        $._direct_table_reference,
+        prec(1, $._table_reference),
       ),
 
     where_clause: ($) => seq($.WHERE, $._expression),

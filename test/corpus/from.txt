@@ -1,0 +1,68 @@
+===
+Select from a table with schema
+===
+
+SELECT
+    a
+FROM
+    schema.table
+
+---
+(source_file
+  (select_statement
+    (SELECT)
+    (select_list
+      (select_list_item
+        (column_reference)))
+    (from_clause
+      (FROM)
+      (object_reference
+        (table_reference
+          (schema_name)
+          (table_name))))))
+
+===
+Select from a table table_name
+===
+
+SELECT
+    a
+FROM
+    table_name
+
+---
+(source_file
+  (select_statement
+    (SELECT)
+    (select_list
+      (select_list_item
+        (column_reference)))
+    (from_clause
+      (FROM)
+      (object_reference
+        (table_reference
+          (table_name))))))
+
+===
+Select from table with schema and database
+===
+
+SELECT
+    a
+FROM
+    database.schema.table
+
+---
+(source_file
+  (select_statement
+    (SELECT)
+    (select_list
+      (select_list_item
+        (column_reference)))
+    (from_clause
+      (FROM)
+      (object_reference
+        (table_reference
+          (database_name)
+          (schema_name)
+          (table_name))))))

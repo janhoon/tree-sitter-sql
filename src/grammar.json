@@ -2392,28 +2392,16 @@
       ]
     },
     "database_name": {
-      "type": "PREC",
-      "value": 3,
-      "content": {
-        "type": "SYMBOL",
-        "name": "_reference"
-      }
+      "type": "SYMBOL",
+      "name": "_reference"
     },
     "schema_name": {
-      "type": "PREC",
-      "value": 2,
-      "content": {
-        "type": "SYMBOL",
-        "name": "_reference"
-      }
+      "type": "SYMBOL",
+      "name": "_reference"
     },
     "table_name": {
-      "type": "PREC",
-      "value": 1,
-      "content": {
-        "type": "SYMBOL",
-        "name": "_reference"
-      }
+      "type": "SYMBOL",
+      "name": "_reference"
     },
     "_database_schema_table_reference": {
       "type": "SEQ",
@@ -2481,7 +2469,7 @@
         }
       ]
     },
-    "_direct_table_reference": {
+    "_table_reference": {
       "type": "SEQ",
       "members": [
         {
@@ -2507,7 +2495,7 @@
       "members": [
         {
           "type": "PREC",
-          "value": 1,
+          "value": 3,
           "content": {
             "type": "SYMBOL",
             "name": "_database_schema_table_reference"
@@ -2522,8 +2510,12 @@
           }
         },
         {
-          "type": "SYMBOL",
-          "name": "_direct_table_reference"
+          "type": "PREC",
+          "value": 1,
+          "content": {
+            "type": "SYMBOL",
+            "name": "_table_reference"
+          }
         }
       ]
     },
@@ -2703,7 +2695,12 @@
       "value": "\\s"
     }
   ],
-  "conflicts": [],
+  "conflicts": [
+    [
+      "database_name",
+      "schema_name"
+    ]
+  ],
   "precedences": [],
   "externals": [],
   "inline": [],
